@@ -116,12 +116,6 @@ $whatsapp_url    = 'https://wa.me/972549992742?text=' . rawurlencode( __( 'של�
 				);
 				?>
 			</p>
-			<nav class="ani-footer-legal" aria-label="<?php esc_attr_e( 'קישורים משפטיים', 'ani' ); ?>">
-				<a href="<?php echo esc_url( $privacy_url ); ?>"><?php esc_html_e( 'מדיניות פרטיות', 'ani' ); ?></a>
-				<a href="<?php echo esc_url( $access_url ); ?>"><?php esc_html_e( 'הצהרת נגישות', 'ani' ); ?></a>
-				<a href="<?php echo esc_url( $cookies_url ); ?>"><?php esc_html_e( 'מדיניות עוגיות', 'ani' ); ?></a>
-				<a href="<?php echo esc_url( $terms_url ); ?>"><?php esc_html_e( 'תקנון', 'ani' ); ?></a>
-			</nav>
 		</div>
 	</div><!-- .ani-footer-bottom -->
 

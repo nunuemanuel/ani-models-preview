@@ -61,7 +61,7 @@ $portfolio_items = array(
 	array(
 		'file'     => 'composite-channel-blue',
 		'category' => 'composites',
-		'alt'      => 'פרופיל V מחומר מרוכב — כחול, לשימוש אוויריי',
+		'alt'      => 'פרופיל V מחומר מרוכב — כחול, לשימוש אווירי',
 		'w'        => 800,
 		'h'        => 533,
 	),

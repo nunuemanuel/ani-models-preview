@@ -371,7 +371,7 @@ function ani_page_meta_description() {
 		'3d-printing'        => 'הדפסת תלת-ממד תעשייתית — FDM, SLA, SLS ו-MJF — לחלקים הנדסיים, אבות טיפוס פונקציונליים ומוצרים סופיים, מקובץ CAD לחלק בתוך שעות.',
 		'scanning'           => 'סריקה תלת-ממדית מדויקת, הנדסה לאחור ובקרת איכות CMM — כולל שחזור חלקים קיימים ללא שרטוט מקורי.',
 		'integration'        => 'הרכבות מכניות ואלקטרו-מכניות, שילוב רכיבים אלקטרוניים ואינטגרציה של מכלולים — עד מוצר מאומת ומוכן לשימוש.',
-		'capabilities'       => 'מפרט היכולות והציוד של א.נ.י — מכונות, חומרים וטכנולוגיות לעיבוד שבבי, הדפסת תלת-ממד, חומרים מרוכבים, סריקה והרכבה.',
+		'capabilities'       => 'מפרט היכולות של א.נ.י — חומרים וטכנולוגיות לעיבוד שבבי, הדפסת תלת-ממד, חומרים מרוכבים, סריקה והרכבה.',
 		'industries-clients' => 'א.נ.י משרתת את תעשיות הביטחון, התעופה, הרחפנים, הרפואה והאלקטרוניקה — לצד יזמים וממציאים פרטיים.',
 		'projects'           => 'פרויקטים נבחרים של א.נ.י — חלקים ומכלולים מוגמרים בעיבוד שבבי, הדפסת תלת-ממד וחומרים מרוכבים.',
 		'about'              => 'א.נ.י — מודלים ואבי טיפוס: One Stop Shop לפיתוח וייצור מוצרים מתקדמים, משלב הרעיון ועד למוצר המוגמר, ברחובות.',
@@ -677,8 +677,6 @@ function ani_llms_txt_output( $wp ) {
 	$lines[] = '- [סריקה והנדסה לאחור / Scanning & reverse engineering](' . $home . 'scanning/) — CMM metrology, reverse engineering, QC.';
 	$lines[] = '- [הרכבה ואינטגרציה / Integration](' . $home . 'integration/) — mechanical & electro-mechanical assembly.';
 	$lines[] = '';
-	$lines[] = '## Equipment';
-	$lines[] = '- FlashForge Creator 4S (FDM), Sintratec S2 (SLS), Sonic Mega V2 (SLA), Formlabs Fuse (SLS), industrial CNC machining centres, industrial 3D scanners, CMM.';
 	$lines[] = '';
 	$lines[] = '## Industries served';
 	$lines[] = '- Defense, aerospace, drones/UAV, medical, electronics, advanced industry; startups, inventors, private clients.';
