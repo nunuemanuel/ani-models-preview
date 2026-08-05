@@ -82,6 +82,14 @@ function ani_enqueue_styles() {
 		null
 	);
 
+	// 2c. Frank Ruhl Libre — editorial serif for large display headings (Hebrew + Latin).
+	wp_enqueue_style(
+		'ani-frank-ruhl',
+		'https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;600;700;800;900&display=swap',
+		array(),
+		null
+	);
+
 	$theme_dir = get_stylesheet_directory();
 
 	// 3. Brand design tokens CSS custom properties.

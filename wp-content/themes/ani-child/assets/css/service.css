@@ -902,136 +902,119 @@ body.ani-lb-open { overflow: hidden; }
 }
 
 /* ====================================================================== *
- *  CLIENT 2026-08 · PRECISION ELEVATION  (loads after elevate.css)
- *  Dark blueprint hero, registration-tick motifs, technical rhythm.
+ *  CLIENT 2026-08 · CLEAN / EDITORIAL capability layer (loads after elevate)
+ *  Light, airy, photography-led. No blueprint grid, no registration ticks.
  * ====================================================================== */
 
-/* ---------- HERO → dark technical ---------- */
+/* ---------- HERO → light, editorial, spacious ---------- */
 .ani-svc-hero {
-  background: var(--ani-carbon);
-  color: #EAF0F8;
-  position: relative;
-  overflow: hidden;
-  border-block-end: 1px solid var(--ani-hair);
+  background: var(--ani-ground);
+  color: var(--ani-ink);
+  padding-block: clamp(56px, 8vw, 104px);
+  border-block-end: 1px solid var(--ani-line-2);
 }
-.ani-svc-hero::before {   /* blueprint grid */
-  content: ""; position: absolute; inset: -2px; z-index: 0;
-  background-image:
-    linear-gradient(rgba(47,123,255,.11) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(47,123,255,.11) 1px, transparent 1px);
-  background-size: 40px 40px;
-  -webkit-mask-image: radial-gradient(120% 90% at 70% 0%, #000 30%, transparent 78%);
-          mask-image: radial-gradient(120% 90% at 70% 0%, #000 30%, transparent 78%);
-  animation: ani-grid 26s linear infinite;
-}
-.ani-svc-hero::after {    /* corner glow */
-  content: ""; position: absolute; inset-block-start: -30%; inset-inline-end: -10%;
-  inline-size: 60%; block-size: 120%; z-index: 0; pointer-events: none;
-  background: radial-gradient(closest-side, rgba(31,109,255,.28), transparent 70%);
-}
-@keyframes ani-grid { to { background-position: 40px 40px, 40px 40px; } }
-.ani-svc-hero__inner { position: relative; z-index: 1; }
-
-.ani-svc-breadcrumb { color: #8FA1B8; font-family: var(--ani-mono); font-size: .8rem; }
-.ani-svc-breadcrumb a { color: #8FA1B8; }
+.ani-svc-hero::before, .ani-svc-hero::after { content: none !important; }
+.ani-svc-hero__inner { gap: clamp(40px, 6vw, 84px); align-items: center; }
+.ani-svc-breadcrumb { color: var(--ani-muted-2); font-family: var(--ani-font); font-size: .85rem; }
+.ani-svc-breadcrumb a { color: var(--ani-muted-2); }
 .ani-svc-breadcrumb a:hover { color: var(--ani-blue); }
-.ani-svc-breadcrumb__current { color: var(--ani-blue); }
-.ani-svc-hero__title { color: #fff; font-size: clamp(2.2rem, 5.2vw, 3.6rem); letter-spacing: -.02em; }
-.ani-svc-hero__intro { color: #B9C6D8; font-size: clamp(1.02rem, 1.5vw, 1.2rem); }
+.ani-svc-breadcrumb__current { color: var(--ani-body-2); }
+.ani-svc-hero__title { color: var(--ani-ink); font-size: clamp(2.3rem, 4.6vw, 3.7rem); margin-block: 18px 20px; }
+.ani-svc-hero__intro { color: var(--ani-body-2); font-size: clamp(1.05rem, 1.5vw, 1.28rem); line-height: 1.75; max-inline-size: 40ch; }
 
+/* spec chips → quiet, refined */
+.ani-svc-chips { gap: 8px; margin-block: 24px; }
 .ani-svc-chip {
-  background: rgba(255,255,255,.05); border: 1px solid var(--ani-hair);
-  color: #D6E0EE; font-family: var(--ani-mono);
+  background: var(--ani-panel); border: 1px solid var(--ani-line-2); color: var(--ani-body-2);
+  font-family: var(--ani-mono); font-size: .74rem; border-radius: 6px; padding-block: 6px; padding-inline: 12px;
 }
 
-/* media as an engineering frame with registration ticks */
-.ani-svc-hero__media { position: relative; border: 1px solid var(--ani-hair); border-radius: 12px; background: var(--ani-ink-2); }
-.ani-svc-hero__media::before, .ani-svc-hero__media::after {
-  content: ""; position: absolute; inline-size: 16px; block-size: 16px; z-index: 4; pointer-events: none;
-  border: 2px solid var(--ani-tick);
+/* media → large, clean rounded frame, soft shadow, NO ticks */
+.ani-svc-hero__media {
+  border: 1px solid var(--ani-line-2); border-radius: 16px; overflow: hidden;
+  background: var(--ani-panel); box-shadow: 0 30px 70px rgba(13,20,27,.12);
 }
-.ani-svc-hero__media::before { inset-block-start: -1px; inset-inline-start: -1px; border-inline-end: 0; border-block-end: 0; }
-.ani-svc-hero__media::after  { inset-block-end: -1px; inset-inline-end: -1px; border-inline-start: 0; border-block-start: 0; }
+.ani-svc-hero__media::before, .ani-svc-hero__media::after { content: none !important; }
+.ani-svc-hero__media img.is-contain { object-fit: contain; background: #0D141B; }
 .ani-svc-hero__badge {
-  font-family: var(--ani-mono); background: var(--ani-blue); color: #fff;
-  letter-spacing: .12em; border-radius: 4px;
+  font-family: var(--ani-mono); background: rgba(13,20,27,.62); color: #fff;
+  letter-spacing: .12em; border-radius: 6px; -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
 }
 
-/* ---------- section eyebrows → tick label everywhere ---------- */
-.ani-svc-head__eyebrow { display: inline-flex; align-items: center; gap: .6em; }
-.ani-svc-head__title { letter-spacing: -.015em; }
+/* ---------- section headers → editorial ---------- */
+.ani-svc-head { margin-block-end: clamp(28px, 4vw, 52px); }
+.ani-svc-head__title { color: var(--ani-ink); font-size: clamp(1.7rem, 3vw, 2.5rem); }
 
-/* ---------- capabilities feature cards → registration ticks + hover ---------- */
+/* ---------- capabilities feature cards → clean, generous ---------- */
+.ani-svc-features { gap: 16px; }
 .ani-svc-feature {
-  position: relative; border-radius: 10px; overflow: hidden;
-  transition: transform .28s var(--e-ease,ease), box-shadow .28s ease, border-color .28s ease;
+  background: #fff; border: 1px solid var(--ani-line-2); border-radius: 14px;
+  padding: 26px 26px; box-shadow: 0 1px 2px rgba(13,20,27,.03);
+  transition: transform .3s var(--e-slow), box-shadow .3s var(--e-slow), border-color .3s var(--e-slow);
 }
-.ani-svc-feature::after {
-  content: ""; position: absolute; inset-block-start: 0; inset-inline-start: 0;
-  inline-size: 3px; block-size: 0; background: var(--ani-blue); transition: block-size .3s var(--e-ease,ease);
-}
-.ani-svc-feature:hover { transform: translateY(-4px); border-color: color-mix(in srgb, var(--ani-blue) 45%, var(--ani-border)); box-shadow: 0 16px 38px rgba(13,20,27,.12); }
-.ani-svc-feature:hover::after { block-size: 100%; }
+.ani-svc-feature::after { content: none !important; }
+.ani-svc-feature:hover { transform: translateY(-5px); box-shadow: 0 22px 48px rgba(13,20,27,.10); border-color: var(--ani-line-2); }
+.ani-svc-feature__icon { color: var(--ani-blue); }
+.ani-svc-feature__text { color: var(--ani-body-2); font-size: 1.02rem; line-height: 1.6; }
 
-/* ---------- technology cards → mono index ---------- */
-.ani-svc-techcard { counter-increment: tech; }
-.ani-svc-techcard::before {
-  content: "0" counter(tech); position: absolute; inset-block-start: 16px; inset-inline-end: 18px;
-  font-family: var(--ani-mono); font-size: .8rem; color: var(--ani-muted);
+/* ---------- technologies → clean cards, no mono index ---------- */
+.ani-svc-techcard::before { content: none !important; }
+.ani-svc-techcard {
+  background: #fff; border: 1px solid var(--ani-line-2); border-block-start: 1px solid var(--ani-line-2);
+  border-radius: 14px; padding: 30px 28px; box-shadow: 0 1px 2px rgba(13,20,27,.03);
 }
-.ani-svc-techs { counter-reset: tech; }
-.ani-svc-techcard { position: relative; }
+.ani-svc-techcard__term { color: var(--ani-ink); }
+.ani-svc-techcard__sub { color: var(--ani-blue); }
+.ani-svc-techcard__desc { color: var(--ani-body-2); }
 
-/* ---------- proof gallery → mono index overlay ---------- */
-.ani-svc-gallery { counter-reset: shot; }
-.ani-svc-gallery__item { counter-increment: shot; }
-.ani-svc-gallery__item::before {
-  content: counter(shot, decimal-leading-zero); position: absolute; z-index: 3;
-  inset-block-start: 8px; inset-inline-start: 8px; font-family: var(--ani-mono); font-size: .72rem;
-  color: #fff; background: rgba(10,14,21,.6); border-radius: 4px; padding: 2px 7px;
-  opacity: 0; transition: opacity .2s ease;
+/* ---------- advantages → ONE refined dark band (clean, no grid) ---------- */
+.ani-svc-section--dark { background: #0D141B; }
+.ani-svc-section--dark .ani-svc-head__title,
+.ani-svc-section--dark .ani-svc-head__eyebrow { color: #fff; }
+.ani-svc-adv { gap: 16px; }
+.ani-svc-adv__item {
+  background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.09);
+  border-radius: 12px; padding: 22px 24px;
 }
-.ani-svc-gallery__item:hover::before, .ani-svc-gallery__item:focus-visible::before { opacity: 1; }
+.ani-svc-adv__num { color: var(--ani-blue); font-family: var(--ani-mono); }
+.ani-svc-adv__text { color: #E7EDF5; }
 
-/* ---------- CLOSING → dramatic dark statement ---------- */
-.ani-svc-closing {
-  background: var(--ani-carbon); color: #EAF0F8; position: relative; overflow: hidden;
-  border-block: 1px solid var(--ani-hair);
-}
-.ani-svc-closing::before {
-  content: ""; position: absolute; inset: 0;
-  background-image: linear-gradient(rgba(47,123,255,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(47,123,255,.07) 1px, transparent 1px);
-  background-size: 44px 44px; -webkit-mask-image: radial-gradient(80% 120% at 50% 0%, #000, transparent 75%); mask-image: radial-gradient(80% 120% at 50% 0%, #000, transparent 75%);
-}
-.ani-svc-closing__text { color: #fff; position: relative; font-size: clamp(1.3rem, 2.4vw, 1.9rem); }
-.ani-svc-closing__text::before {
-  content: ""; display: block; inline-size: 40px; block-size: 3px; background: var(--ani-blue);
-  margin: 0 auto 22px; border-radius: 2px;
-}
+/* ---------- process strip → clean ---------- */
+.ani-svc-process { gap: 24px; }
+.ani-svc-process__step { border-radius: 14px; box-shadow: 0 12px 34px rgba(13,20,27,.10); }
 
-/* ---------- related cards → tick hover ---------- */
-.ani-svc-related__card { transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease; }
-.ani-svc-related__card:hover { transform: translateY(-3px); box-shadow: 0 14px 32px rgba(13,20,27,.1); }
-
-@media (prefers-reduced-motion: reduce) {
-  .ani-svc-hero::before { animation: none; }
-  .ani-svc-feature, .ani-svc-feature::after, .ani-svc-related__card { transition: none; }
-}
-
-/* ---------- FIX: Hello Elementor crimson <button> reset on gallery tiles ---------- */
+/* ---------- proof gallery → larger, clean, elegant ---------- */
+.ani-svc-gallery { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+.ani-svc-gallery__item::before { content: none !important; }
 .ani-svc-gallery .ani-svc-gallery__item,
 .ani-svc-gallery .ani-svc-gallery__item:hover,
 .ani-svc-gallery .ani-svc-gallery__item:focus,
 .ani-svc-gallery .ani-svc-gallery__item:focus-visible,
 .ani-svc-gallery .ani-svc-gallery__item:active {
-	border: 1px solid var(--ani-border) !important;
-	background-color: var(--ani-ink);
-	outline: none;
-	box-shadow: none;
+  border: 1px solid var(--ani-line-2) !important; background-color: var(--ani-panel);
+  border-radius: 14px; outline: none; box-shadow: none;
+}
+.ani-svc-gallery .ani-svc-gallery__item {
+  transition: transform .35s var(--e-slow), box-shadow .35s var(--e-slow), border-color .35s var(--e-slow);
 }
 .ani-svc-gallery .ani-svc-gallery__item:hover,
 .ani-svc-gallery .ani-svc-gallery__item:focus-visible {
-	border-color: var(--ani-blue) !important;
-	box-shadow: 0 16px 36px rgba(13, 20, 27, .18);
+  transform: translateY(-5px); border-color: var(--ani-line-2) !important;
+  box-shadow: 0 22px 48px rgba(13,20,27,.14) !important;
 }
-.ani-svc-gallery .ani-svc-gallery__item:focus-visible { outline: 2px solid var(--ani-blue); outline-offset: 2px; }
+.ani-svc-gallery__item:focus-visible { outline: 2px solid var(--ani-blue); outline-offset: 2px; }
+
+/* ---------- closing → large editorial serif statement (light) ---------- */
+.ani-svc-closing { background: var(--ani-panel); color: var(--ani-ink); border-block: 1px solid var(--ani-line-2); }
+.ani-svc-closing::before { content: none !important; }
+.ani-svc-closing__text {
+  color: var(--ani-ink); font-family: var(--ani-display); font-weight: 600;
+  font-size: clamp(1.4rem, 2.6vw, 2.15rem); line-height: 1.4; max-inline-size: 24ch;
+}
+.ani-svc-closing__text::before { content: none !important; }
+
+/* ---------- related → clean ---------- */
+.ani-svc-related__card { border-radius: 12px; transition: transform .25s var(--e-slow), box-shadow .25s var(--e-slow); }
+.ani-svc-related__card:hover { transform: translateY(-3px); box-shadow: 0 16px 36px rgba(13,20,27,.10); }
+
+@media (max-width: 900px) { .ani-svc-hero__inner { grid-template-columns: 1fr; } .ani-svc-hero__media { order: -1; } }

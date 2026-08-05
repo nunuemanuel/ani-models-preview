@@ -6,287 +6,189 @@
  *      `Y'
  *     mano
  *
- *  elevate.css — A.N.I precision/blueprint elevation layer (2026-08 redesign).
- *  Loaded LAST sitewide; upgrades type, components, motion + restyles the
- *  homepage. Capability-page specifics live at the end of service.css.
+ *  elevate.css — A.N.I clean / editorial elevation layer (2026-08 redesign v2).
+ *  Direction: clean & minimal + editorial. Generous whitespace, restrained
+ *  colour (blue as a small accent only), Frank Ruhl Libre display serif over
+ *  Heebo, large photography, subtle smooth motion. Loaded LAST, sitewide.
  *  RTL-safe (logical properties); no uppercase / letter-spacing on Hebrew.
  */
 
 :root {
-  --ani-carbon:    #0A0E15;   /* deepest technical dark */
-  --ani-carbon-2:  #0F1620;   /* dark panel */
-  --ani-ink-2:     #141C27;   /* raised dark surface */
-  --ani-hair:      rgba(255,255,255,.10);
-  --ani-hair-soft: rgba(255,255,255,.06);
-  --ani-tick:      #2F7BFF;   /* registration-mark blue */
-  --e-ease:        cubic-bezier(.22,.61,.36,1);
-  --e-radius:      10px;
-  --e-radius-sm:   6px;
+  --ani-display: "Frank Ruhl Libre", "Heebo", Georgia, serif;
+  --ani-ground:  #FBFBFD;   /* clean near-white page */
+  --ani-panel:   #F6F7FA;   /* soft alt surface */
+  --ani-line-2:  #ECEFF4;   /* hairline */
+  --ani-body-2:  #3A4552;   /* refined body text */
+  --ani-muted-2: #8C96A4;   /* meta / eyebrow */
+  --e-ease:      cubic-bezier(.22,.61,.36,1);
+  --e-slow:      cubic-bezier(.16,1,.3,1);
 }
 
-/* ====================================================================== *
- *  01 · SCROLL PROGRESS + PAGE ATMOSPHERE
- * ====================================================================== */
-.ani-scrollbar {
-  position: fixed; inset-block-start: 0; inset-inline: 0; block-size: 3px;
-  background: linear-gradient(90deg, var(--ani-blue), #59A0FF);
-  transform: scaleX(var(--sp, 0)); transform-origin: 0 50%;
-  z-index: 2000; will-change: transform; pointer-events: none;
-}
-[dir="rtl"] .ani-scrollbar { transform-origin: 100% 50%; }
+/* remove the earlier busy chrome */
+.ani-scrollbar { display: none !important; }
 
 /* ====================================================================== *
- *  02 · TYPE — heavier, tighter display; technical eyebrows
+ *  TYPOGRAPHY — editorial serif display, clean Heebo body
  * ====================================================================== */
+.hero-shot__copy h1,
+.ani-svc-hero__title,
 .section-title,
-h1.ani-svc-hero__title,
-.hero-shot__title,
-.cta-band__title {
-  letter-spacing: -.02em; line-height: 1.04; text-wrap: balance;
-  font-weight: 800;
+.cta-band__title,
+.ani-services-hero .section-title,
+h1.entry-title, .ani-post-title {
+  font-family: var(--ani-display);
+  font-weight: 700;
+  letter-spacing: -.01em;
+  line-height: 1.1;
+  text-wrap: balance;
 }
-.section-title { font-size: clamp(1.9rem, 4.2vw, 3.1rem); }
+.section-title { font-size: clamp(2rem, 3.6vw, 3.1rem); }
 
-/* Eyebrow → mono label with a leading registration tick. Latin gets tracking;
-   Hebrew stays clean (no letter-spacing / uppercase). */
+/* eyebrows → quiet, refined (NOT blue, NOT mono, no tick) */
 .section-eyebrow,
-.ani-svc-head__eyebrow {
-  font-family: var(--ani-mono); font-size: .74rem; font-weight: 600;
-  color: var(--ani-blue); display: inline-flex; align-items: center; gap: .6em;
+.ani-svc-head__eyebrow,
+.cta-band__eyebrow {
+  font-family: var(--ani-font); font-weight: 600; font-size: .78rem;
+  color: var(--ani-muted-2); letter-spacing: 0; display: inline-block;
 }
-.section-eyebrow::before,
-.ani-svc-head__eyebrow::before {
-  content: ""; inline-size: 22px; block-size: 2px; background: var(--ani-blue);
-  display: inline-block; flex: 0 0 auto;
-}
-:lang(en) .section-eyebrow, .section-eyebrow[dir="ltr"] { letter-spacing: .22em; text-transform: uppercase; }
+.section-eyebrow::before, .ani-svc-head__eyebrow::before { content: none; }
+:lang(en) .section-eyebrow, .section-eyebrow[dir="ltr"],
+[lang="en"] .section-eyebrow { letter-spacing: .16em; text-transform: uppercase; }
+
+body { color: var(--ani-body-2); }
 
 /* ====================================================================== *
- *  03 · BUTTONS — sharper, kinetic
+ *  WHITESPACE — generous, consistent section rhythm
+ * ====================================================================== */
+.ani-svc-section, .ani-svc-lead, .ani-svc-closing,
+.ani-services-grid, .cta-band {
+  padding-block: clamp(64px, 9vw, 128px);
+}
+.ani-container, .cta-band__inner, .container { --gutter: clamp(20px, 5vw, 64px); }
+
+/* ====================================================================== *
+ *  BUTTONS — clean, smooth
  * ====================================================================== */
 .ani-btn {
-  border-radius: var(--e-radius-sm); font-weight: 700; letter-spacing: -.01em;
-  transition: transform .2s var(--e-ease), background .2s var(--e-ease),
-              box-shadow .2s var(--e-ease), color .2s var(--e-ease);
-  position: relative; overflow: hidden;
+  border-radius: 8px; font-weight: 600; letter-spacing: -.01em;
+  padding-block: 14px; padding-inline: 26px;
+  transition: transform .25s var(--e-ease), background .25s var(--e-ease),
+              box-shadow .25s var(--e-ease), color .25s var(--e-ease), border-color .25s var(--e-ease);
 }
-.ani-btn--primary { box-shadow: 0 6px 18px rgba(31,109,255,.28); }
-.ani-btn--primary:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(31,109,255,.42); }
-.ani-btn--primary:active { transform: translateY(0); }
-.ani-btn .ani-btn-arrow { transition: transform .25s var(--e-ease); }
+.ani-btn--primary { box-shadow: 0 8px 22px rgba(31,109,255,.20); }
+.ani-btn--primary:hover { transform: translateY(-2px); box-shadow: 0 14px 34px rgba(31,109,255,.30); }
+.ani-btn .ani-btn-arrow { transition: transform .3s var(--e-ease); }
 .ani-btn:hover .ani-btn-arrow { transform: translateX(4px); }
 [dir="rtl"] .ani-btn:hover .ani-btn-arrow { transform: translateX(-4px); }
 
 /* ====================================================================== *
- *  04 · LINK-COLOR FIX — chrome links must not inherit the global
- *  a:visited blue. Footer / nav / legal links: one color across all states.
+ *  LINK-COLOUR FIX — chrome links never inherit the global a:visited blue
  * ====================================================================== */
 .ani-footer-links a, .ani-footer-links a:visited,
 .ani-footer-contact a, .ani-footer-contact a:visited,
 .ani-footer-nav a, .ani-footer-nav a:visited,
 .ani-footer-nav__list a, .ani-footer-nav__list a:visited,
-.footer-nav a, .footer-nav a:visited { color: #9FB0C6; }
+.footer-nav a, .footer-nav a:visited { color: #9FB0C6; text-decoration: none; }
 .ani-footer-legal a, .ani-footer-legal a:visited { color: #7C8CA3; }
 .ani-footer-links a:hover, .ani-footer-contact a:hover,
 .ani-footer-nav a:hover, .ani-footer-nav__list a:hover,
 .footer-nav a:hover, .ani-footer-legal a:hover { color: #fff; }
-/* footer links: animated underline reveal */
-.ani-footer-links a { position: relative; text-decoration: none; padding-block-end: 1px; }
-.ani-footer-links a::after {
-  content: ""; position: absolute; inset-block-end: -1px; inset-inline-start: 0;
-  inline-size: 0; block-size: 1px; background: var(--ani-blue); transition: inline-size .25s var(--e-ease);
-}
-.ani-footer-links a:hover::after { inline-size: 100%; }
 
 /* ====================================================================== *
- *  05 · REGISTRATION-TICK CARD MOTIF + hover  (homepage cap-cards)
+ *  CARDS — clean, soft, generous (remove the tick motif entirely)
  * ====================================================================== */
 .cap-card, .equip-card {
-  border-radius: var(--e-radius) !important; position: relative;
-  transition: transform .28s var(--e-ease), box-shadow .28s var(--e-ease), border-color .28s var(--e-ease);
+  border-radius: 14px !important;
+  border-color: var(--ani-line-2) !important;
+  box-shadow: 0 1px 2px rgba(13,20,27,.03) !important;
+  transition: transform .3s var(--e-slow), box-shadow .3s var(--e-slow);
 }
-.cap-card::before, .cap-card::after {
-  content: ""; position: absolute; inline-size: 14px; block-size: 14px;
-  border: 2px solid var(--ani-tick); opacity: 0; transition: opacity .28s var(--e-ease); z-index: 3;
+.cap-card::before, .cap-card::after,
+.equip-card::before, .equip-card::after { content: none !important; }
+.cap-card:hover, .equip-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 22px 50px rgba(13,20,27,.10) !important;
 }
-.cap-card::before { inset-block-start: 10px; inset-inline-start: 10px; border-inline-end: 0; border-block-end: 0; }
-.cap-card::after  { inset-block-end: 10px; inset-inline-end: 10px; border-inline-start: 0; border-block-start: 0; }
-.cap-card:hover { transform: translateY(-6px); box-shadow: 0 26px 60px rgba(13,20,27,.16); }
-.cap-card:hover::before, .cap-card:hover::after { opacity: 1; }
-.cap-card__media img { transition: transform .5s var(--e-ease); }
-.cap-card:hover .cap-card__media img { transform: scale(1.06); }
+.cap-card__media img { transition: transform .6s var(--e-slow); }
+.cap-card:hover .cap-card__media img { transform: scale(1.04); }
 
 /* ====================================================================== *
- *  06 · REVEAL / STAGGER (reveal.js adds .is-visible)
+ *  MOTION — subtle, smooth reveals (elevate.js adds .rv-in). Progressive:
+ *  hidden only when JS confirmed (.ani-js on <html>).
  * ====================================================================== */
-/* Progressive enhancement: only hide when JS is confirmed (.ani-js on <html>),
-   so content is never trapped invisible if JS fails. elevate.js adds .rv-in. */
 @media (prefers-reduced-motion: no-preference) {
   .ani-js [data-reveal] {
-    opacity: 0; transform: translateY(22px);
-    transition: opacity .7s var(--e-ease), transform .7s var(--e-ease);
+    opacity: 0; transform: translateY(16px);
+    transition: opacity .9s var(--e-slow), transform .9s var(--e-slow);
     transition-delay: var(--d, 0ms);
   }
   .ani-js [data-reveal].rv-in { opacity: 1; transform: none; }
 }
-
-/* count-up numbers */
 .ani-count { font-variant-numeric: tabular-nums; }
 
 /* ====================================================================== *
- *  07 · HOMEPAGE — hero, stats, sections, cta, industries
+ *  HOMEPAGE HERO — clean, editorial, legible (no grid, no ticks)
  * ====================================================================== */
-/* hero: darker, more filmic scrim + kinetic grid already there */
-.hero-shot__title { font-size: clamp(2.3rem, 6vw, 4.2rem); }
-.hero-shot__scrim, .hero-shot::after {
-  background: linear-gradient(180deg, rgba(10,14,21,.30), rgba(10,14,21,.55) 60%, rgba(10,14,21,.82)) !important;
-}
-/* stat band — mono figures, tick divider */
-.hero-stats, .stats-band { position: relative; }
-.stat__num, .hero-stat__num, .stat-num {
-  font-family: var(--ani-mono); font-weight: 600; letter-spacing: -.02em;
-  font-variant-numeric: tabular-nums;
-}
-
-/* section eyebrows/titles centered rhythm already; add measurement-rule divider */
-.section-title--center::after {
-  content: ""; display: block; inline-size: 46px; block-size: 3px;
-  background: var(--ani-blue); margin: 18px auto 0; border-radius: 2px;
-}
-
-/* CTA band → deeper, blueprint texture, sharper */
-.cta-band { position: relative; overflow: hidden; }
-.cta-band__title { font-size: clamp(1.9rem, 4.5vw, 3rem); }
-
-/* industry chips / sector cards hover */
-.ind-sector, .industry-card { transition: transform .25s var(--e-ease), border-color .25s var(--e-ease); }
-.ind-sector:hover, .industry-card:hover { transform: translateY(-4px); }
-
-/* certs badges → read as "standards worked to", tick frame + hover */
-.certs__badges { gap: 14px; }
-.cert-badge {
-  position: relative; border-radius: var(--e-radius-sm) !important;
-  transition: transform .2s var(--e-ease), border-color .2s var(--e-ease), box-shadow .2s var(--e-ease);
-}
-.cert-badge:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(13,20,27,.1); }
-.cert-badge__code { font-family: var(--ani-mono) !important; letter-spacing: .01em; }
-
-/* ====================================================================== *
- *  08 · FOOTER — technical polish
- * ====================================================================== */
-.ani-site-footer { position: relative; }
-.ani-site-footer::before {
-  content: ""; position: absolute; inset-block-start: 0; inset-inline: 0; block-size: 2px;
-  background: linear-gradient(90deg, transparent, var(--ani-blue), transparent); opacity: .5;
-}
-.ani-footer-col__heading {
-  font-family: var(--ani-mono); font-size: .72rem; letter-spacing: .04em;
-}
-
-/* ====================================================================== *
- *  09 · REDUCED MOTION
- * ====================================================================== */
-@media (prefers-reduced-motion: reduce) {
-  .ani-scrollbar { display: none; }
-  .cap-card, .equip-card, .cap-card__media img, .ani-btn, .cert-badge { transition: none; }
-}
-
-/* ====================================================================== *
- *  10 · HOMEPAGE HERO — bold blueprint rebuild + legibility fix
- *  (overrides the earlier, too-timid homepage rules above)
- * ====================================================================== */
-.hero-shot { position: relative; overflow: hidden; min-block-size: clamp(560px, 82vh, 820px); }
-.hero-shot__media img { filter: saturate(.85) contrast(1.05); }
-
-/* STRONG legibility scrim — dark toward the text (RTL: inline-end/right) + floor */
+.hero-shot { position: relative; overflow: hidden; min-block-size: clamp(560px, 84vh, 840px); }
+.hero-shot__media img { filter: saturate(.9) contrast(1.02); }
 .hero-shot__scrim {
   position: absolute !important; inset: 0 !important; z-index: 1 !important; display: block !important;
   background:
-    linear-gradient(to left, rgba(7,10,16,.92) 0%, rgba(7,10,16,.66) 42%, rgba(7,10,16,.22) 78%, rgba(7,10,16,.35) 100%),
-    linear-gradient(to top, rgba(7,10,16,.85), transparent 55%) !important;
+    linear-gradient(to left, rgba(9,12,18,.88) 0%, rgba(9,12,18,.55) 46%, rgba(9,12,18,.12) 80%, rgba(9,12,18,.28) 100%),
+    linear-gradient(to top, rgba(9,12,18,.72), transparent 52%) !important;
 }
 [dir="ltr"] .hero-shot__scrim {
   background:
-    linear-gradient(to right, rgba(7,10,16,.92) 0%, rgba(7,10,16,.66) 42%, rgba(7,10,16,.22) 78%, rgba(7,10,16,.35) 100%),
-    linear-gradient(to top, rgba(7,10,16,.85), transparent 55%) !important;
+    linear-gradient(to right, rgba(9,12,18,.88) 0%, rgba(9,12,18,.55) 46%, rgba(9,12,18,.12) 80%, rgba(9,12,18,.28) 100%),
+    linear-gradient(to top, rgba(9,12,18,.72), transparent 52%) !important;
 }
-/* animated blueprint grid over the image, under the copy */
-.hero-shot::before {
-  content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none;
-  background-image:
-    linear-gradient(rgba(47,123,255,.14) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(47,123,255,.14) 1px, transparent 1px);
-  background-size: 46px 46px;
-  -webkit-mask-image: linear-gradient(to left, #000 15%, transparent 70%);
-          mask-image: linear-gradient(to left, #000 15%, transparent 70%);
-  animation: ani-grid 30s linear infinite;
-}
-.hero-shot__inner { position: relative; z-index: 3; }
-
-/* technical frame + registration ticks around the copy block */
-.hero-shot__copy { position: relative; padding-inline-end: clamp(0px, 2vw, 26px); }
-.hero-shot__copy::before, .hero-shot__copy::after {
-  content: ""; position: absolute; inline-size: 20px; block-size: 20px; border: 2px solid var(--ani-tick); pointer-events: none;
-}
-.hero-shot__copy::before { inset-block-start: -14px; inset-inline-end: -14px; border-inline-start: 0; border-block-end: 0; }
-.hero-shot__copy::after  { inset-block-end: -14px; inset-inline-start: -14px; border-inline-end: 0; border-block-start: 0; }
-
-/* eyebrow → mono spec line with tick */
+.hero-shot__inner { position: relative; z-index: 2; }
 .hero-shot__eyebrow {
-  font-family: var(--ani-mono) !important; color: #7FB0FF !important; font-size: .82rem !important;
-  display: inline-flex; align-items: center; gap: .6em; letter-spacing: .01em;
+  font-family: var(--ani-font) !important; color: #B7C6DB !important; font-size: .82rem !important;
+  font-weight: 500 !important; letter-spacing: .01em;
 }
-.hero-shot__eyebrow::before { content: ""; inline-size: 26px; block-size: 2px; background: var(--ani-blue); flex: 0 0 auto; }
-
-/* headline (bare <h1>) — the one big line, crisp with a safety shadow */
 .hero-shot__copy h1 {
-  color: #fff !important; font-size: clamp(2.4rem, 6vw, 4.4rem) !important; line-height: 1.02 !important;
-  letter-spacing: -.025em; text-shadow: 0 2px 30px rgba(0,0,0,.55), 0 1px 3px rgba(0,0,0,.6);
+  color: #fff !important; font-size: clamp(2.6rem, 5.6vw, 4.6rem) !important;
+  line-height: 1.06 !important; letter-spacing: -.01em;
+  text-shadow: 0 2px 40px rgba(0,0,0,.4);
 }
-.hero-shot__sub { color: #D6E0EE !important; text-shadow: 0 1px 14px rgba(0,0,0,.6); }
-/* tagline → bold blue accent line, clearly below the headline */
+.hero-shot__sub { color: #DCE4EF !important; font-size: clamp(1.02rem, 1.4vw, 1.2rem) !important; line-height: 1.7 !important; }
 .hero-shot__tagline {
-  color: #8FB6FF !important; font-size: clamp(1.1rem, 2.1vw, 1.55rem) !important;
-  font-weight: 700 !important; line-height: 1.35 !important; letter-spacing: -.01em;
-  text-shadow: 0 1px 12px rgba(0,0,0,.6);
+  color: #fff !important; font-family: var(--ani-display) !important;
+  font-size: clamp(1.2rem, 2.1vw, 1.7rem) !important; font-weight: 600 !important; line-height: 1.4 !important;
 }
-
-/* kinetic entrance on load */
 @media (prefers-reduced-motion: no-preference) {
-  .hero-shot__eyebrow  { animation: heroUp .7s var(--e-ease) both; }
-  .hero-shot__copy h1  { animation: heroUp .8s .08s var(--e-ease) both; }
-  .hero-shot__sub      { animation: heroUp .8s .18s var(--e-ease) both; }
-  .hero-shot__tagline  { animation: heroUp .8s .26s var(--e-ease) both; }
-  .hero-shot__actions  { animation: heroUp .8s .34s var(--e-ease) both; }
+  .hero-shot__eyebrow { animation: heroUp .8s var(--e-slow) both; }
+  .hero-shot__copy h1 { animation: heroUp .9s .08s var(--e-slow) both; }
+  .hero-shot__sub     { animation: heroUp .9s .18s var(--e-slow) both; }
+  .hero-shot__tagline { animation: heroUp .9s .26s var(--e-slow) both; }
+  .hero-shot__actions { animation: heroUp .9s .34s var(--e-slow) both; }
 }
-@keyframes heroUp { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
+@keyframes heroUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
 
 /* ====================================================================== *
- *  11 · HOMEPAGE — always-on tick motif + bolder rhythm
+ *  HOMEPAGE — quiet section rhythm, clean stat band, refined CTA
  * ====================================================================== */
-.cap-card::before, .cap-card::after { opacity: .28; }   /* visible at rest, full on hover */
-.cap-card:hover::before, .cap-card:hover::after { opacity: 1; }
-.equip-card { position: relative; }
-.equip-card::before {
-  content: ""; position: absolute; inset-block-start: 8px; inset-inline-start: 8px;
-  inline-size: 12px; block-size: 12px; border: 2px solid var(--ani-tick); border-inline-end: 0; border-block-end: 0;
-  opacity: .3; transition: opacity .25s var(--e-ease);
+.section-title--center::after {
+  content: ""; display: block; inline-size: 40px; block-size: 2px;
+  background: var(--ani-blue); margin: 20px auto 0; border-radius: 2px; opacity: .8;
 }
-.equip-card:hover::before { opacity: 1; }
+.stat__num, .hero-stat__num, .stat-num { font-variant-numeric: tabular-nums; letter-spacing: -.02em; }
 
-/* section headers a touch larger + mono eyebrow tick already set */
-.section-title, .cta-band__title { font-weight: 800; }
-
-/* CTA band → deeper blueprint, technical grid */
-.cta-band--blueprint { position: relative; }
-.cta-band--blueprint::after {
-  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: .5;
-  background-image: linear-gradient(rgba(255,255,255,.10) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.10) 1px, transparent 1px);
-  background-size: 40px 40px; -webkit-mask-image: radial-gradient(90% 120% at 50% 0%, #000, transparent 72%); mask-image: radial-gradient(90% 120% at 50% 0%, #000, transparent 72%);
-}
+/* CTA band — keep brand blue but calmer + cleaner */
+.cta-band { position: relative; overflow: hidden; }
+.cta-band--blueprint::after, .cta-band::after { content: none !important; }
 .cta-band__inner { position: relative; z-index: 1; }
 
+/* certs / equipment — clean */
+.cert-badge { border-radius: 10px !important; transition: transform .25s var(--e-slow), box-shadow .25s var(--e-slow); }
+.cert-badge:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(13,20,27,.08); }
+
+/* footer top accent — remove the loud line */
+.ani-site-footer::before { content: none !important; }
+.ani-footer-col__heading { font-family: var(--ani-font); }
+
 @media (prefers-reduced-motion: reduce) {
-  .hero-shot::before { animation: none; }
-  .hero-shot__eyebrow, .hero-shot__tagline, .hero-shot__sub, .hero-shot__actions { animation: none; }
+  .hero-shot__eyebrow, .hero-shot__copy h1, .hero-shot__sub, .hero-shot__tagline, .hero-shot__actions { animation: none; }
+  .cap-card, .equip-card, .ani-btn, .cert-badge { transition: none; }
 }
