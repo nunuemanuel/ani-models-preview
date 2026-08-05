@@ -1,0 +1,987 @@
+/* =======================================================================
+   A.N.I Child Theme — Blog styles
+   Covers: blog index (home.php) + single post (single.php).
+   RTL-safe: logical CSS only (inline-start/end, block-start/end).
+   No letter-spacing on Hebrew body text.
+   Link colour: --ani-blue (#1F6DFF) — never hardcoded hex.
+   ======================================================================= */
+
+/* ---------------------------------------------------------------- draft notice */
+.ani-draft-notice {
+	display: flex;
+	align-items: flex-start;
+	gap: 14px;
+	background: #fffbe6;
+	border-inline-start: 4px solid #f0a800;
+	border-radius: 4px;
+	padding: 16px 20px;
+	margin-block-end: 40px;
+	font-size: 0.95rem;
+	font-family: var(--ani-font);
+	color: #5a4200;
+	line-height: 1.55;
+}
+
+.ani-draft-notice__icon {
+	font-size: 1.3rem;
+	flex-shrink: 0;
+	line-height: 1.4;
+}
+
+.ani-draft-notice__text {
+	font-weight: 600;
+}
+
+/* ---------------------------------------------------------------- blog index page wrapper */
+.ani-blog-index {
+	padding-block-end: 0;
+}
+
+/* ---------------------------------------------------------------- HERO (full-bleed image + flat dark scrim) */
+.ani-blog-hero {
+	position: relative;
+	display: flex;
+	align-items: center;
+	min-block-size: clamp(360px, 42vw, 420px);
+	overflow: hidden;
+	margin-block-end: 64px;
+}
+
+.ani-blog-hero__bg {
+	position: absolute;
+	inset: 0;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+/* Flat dark scrim — single solid tint, NO gradient (brand rule) */
+.ani-blog-hero__scrim {
+	position: absolute;
+	inset: 0;
+	background: rgba(13, 20, 27, .68); /* --ani-ink @ 68% */
+}
+
+.ani-blog-hero__inner {
+	position: relative;
+	z-index: 1;
+	text-align: center;
+}
+
+.ani-blog-hero__title {
+	font-size: clamp(2.2rem, 1.4rem + 3vw, 3.2rem);
+	font-weight: 800;
+	color: var(--ani-white);
+	line-height: 1.1;
+	position: relative;
+	display: inline-block;
+	padding-block-end: 16px;
+}
+
+/* Blue accent underline */
+.ani-blog-hero__title::after {
+	content: "";
+	display: block;
+	inline-size: 56px;
+	block-size: 3px;
+	background: var(--ani-blue);
+	border-radius: 2px;
+	margin-block-start: 14px;
+	margin-inline: auto;
+}
+
+.ani-blog-hero__subtitle {
+	color: rgba(255, 255, 255, .86);
+	font-size: clamp(1rem, 0.9rem + 0.4vw, 1.15rem);
+	line-height: 1.6;
+	max-inline-size: 52ch;
+	margin-inline: auto;
+	margin-block-start: 14px;
+}
+
+.ani-blog-hero__detail {
+	font-family: var(--ani-mono);
+	font-size: 0.82rem;
+	color: rgba(255, 255, 255, .62);
+	margin-block-start: 22px;
+}
+
+.ani-blog-hero__count {
+	color: var(--ani-white);
+	font-weight: 600;
+	/* LTR-isolate: numeral sequence */
+	direction: ltr;
+	unicode-bidi: isolate;
+}
+
+.ani-blog-hero__sep {
+	margin-inline: 8px;
+	color: var(--ani-blue);
+}
+
+/* ---------------------------------------------------------------- two-column body */
+.ani-blog-body {
+	display: grid;
+	/* In RTL the FIRST grid track is on the RIGHT → featured lands right. */
+	grid-template-columns: 320px minmax(0, 1fr);
+	gap: 48px;
+	align-items: start;
+	padding-block-end: 88px;
+}
+
+/* ---------------------------------------------------------------- featured column (RIGHT) */
+.ani-blog-featured {
+	position: sticky;
+	inset-block-start: 24px;
+}
+
+.ani-blog-featured__title {
+	font-size: 1.2rem;
+	font-weight: 800;
+	color: var(--ani-ink);
+	line-height: 1.2;
+	margin-block-end: 22px;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+/* Blue marker before the heading — RTL-safe via inline-flex order */
+.ani-blog-featured__title::before {
+	content: "";
+	flex-shrink: 0;
+	inline-size: 6px;
+	block-size: 22px;
+	background: var(--ani-blue);
+	border-radius: 3px;
+}
+
+.ani-blog-featured__list {
+	display: flex;
+	flex-direction: column;
+	gap: 18px;
+}
+
+/* Compact vertical featured card — blue-tinted, prominent */
+.ani-feat-card {
+	background: var(--ani-white);
+	border: 1px solid color-mix(in srgb, var(--ani-blue) 30%, var(--ani-border));
+	border-radius: var(--ani-radius-card);
+	overflow: hidden;
+	box-shadow: 0 2px 4px rgba(13, 20, 27, .05),
+	            0 14px 36px rgba(31, 109, 255, .10);
+	display: flex;
+	flex-direction: column;
+	transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.ani-feat-card:hover {
+	transform: translateY(-3px);
+	box-shadow: 0 4px 8px rgba(13, 20, 27, .06),
+	            0 18px 44px rgba(31, 109, 255, .16);
+}
+
+.ani-feat-card__thumb {
+	display: block;
+	inline-size: 100%;
+	aspect-ratio: 16 / 9;
+	overflow: hidden;
+	background: var(--ani-blueprint);
+}
+
+.ani-feat-card__thumb img {
+	inline-size: 100%;
+	block-size: 100%;
+	object-fit: cover;
+	display: block;
+	transition: transform 0.3s ease;
+}
+
+.ani-feat-card:hover .ani-feat-card__thumb img {
+	transform: scale(1.04);
+}
+
+.ani-feat-card__body {
+	padding: 16px 18px 18px;
+}
+
+.ani-feat-card__cat {
+	font-family: var(--ani-mono);
+	font-size: 0.72rem;
+	font-weight: 500;
+	color: var(--ani-blue);
+	text-transform: uppercase;
+	margin-block-end: 8px;
+	display: block;
+}
+
+.ani-feat-card__title {
+	font-size: 0.98rem;
+	font-weight: 700;
+	color: var(--ani-ink);
+	line-height: 1.4;
+}
+
+.ani-feat-card__title a {
+	color: inherit;
+	text-decoration: none;
+	transition: color 0.15s ease;
+}
+
+.ani-feat-card__title a:hover {
+	color: var(--ani-blue);
+}
+
+/* ---------------------------------------------------------------- main column (LEFT) */
+.ani-blog-main {
+	min-inline-size: 0; /* let the column shrink inside the grid */
+}
+
+/* ---------------------------------------------------------------- controls bar */
+.ani-blog-controls {
+	margin-block-end: 28px;
+	padding-block-end: 22px;
+	border-block-end: 1px solid var(--ani-border);
+}
+
+.ani-blog-controls__row {
+	display: flex;
+	align-items: flex-end;
+	gap: 16px 24px;
+	flex-wrap: wrap;
+	margin-block-start: 18px;
+}
+
+/* Search field */
+.ani-blog-search {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	flex: 1 1 240px;
+	inline-size: min(320px, 100%);
+}
+
+.ani-blog-search__label {
+	font-size: 0.8rem;
+	font-weight: 600;
+	color: var(--ani-body);
+}
+
+.ani-blog-search__input {
+	font-family: var(--ani-font);
+	font-size: 0.95rem;
+	color: var(--ani-ink);
+	background: var(--ani-white);
+	border: 1px solid var(--ani-border);
+	border-radius: var(--ani-radius-btn);
+	padding-block: 10px;
+	padding-inline: 14px;
+	inline-size: 100%;
+	transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.ani-blog-search__input::placeholder {
+	color: var(--ani-muted);
+}
+
+.ani-blog-search__input:focus-visible {
+	outline: none;
+	border-color: var(--ani-blue);
+	box-shadow: 0 0 0 3px rgba(31, 109, 255, .18);
+}
+
+/* Category tabs — pill buttons */
+.ani-blog-tabs {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+
+.ani-blog-tab {
+	font-family: var(--ani-font);
+	font-size: 0.9rem;
+	font-weight: 600;
+	color: var(--ani-body);
+	background: var(--ani-surface);
+	border: 1px solid var(--ani-border);
+	border-radius: 999px;
+	padding-block: 8px;
+	padding-inline: 18px;
+	cursor: pointer;
+	white-space: nowrap;
+	transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.ani-blog-tab:hover {
+	border-color: var(--ani-blue);
+	color: var(--ani-blue);
+}
+
+.ani-blog-tab.is-active {
+	background: var(--ani-blue);
+	border-color: var(--ani-blue);
+	color: var(--ani-white);
+}
+
+.ani-blog-tab:focus-visible {
+	outline: none;
+	box-shadow: 0 0 0 3px rgba(31, 109, 255, .25);
+}
+
+/* Per-page select */
+.ani-blog-perpage {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.ani-blog-perpage__label {
+	font-size: 0.8rem;
+	font-weight: 600;
+	color: var(--ani-body);
+}
+
+.ani-blog-perpage__select {
+	font-family: var(--ani-font);
+	font-size: 0.9rem;
+	font-weight: 600;
+	color: var(--ani-ink);
+	background: var(--ani-white);
+	border: 1px solid var(--ani-border);
+	border-radius: var(--ani-radius-btn);
+	padding-block: 9px;
+	padding-inline: 14px 32px;
+	cursor: pointer;
+	/* keep the numeric option list LTR */
+	direction: ltr;
+	transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.ani-blog-perpage__select:focus-visible {
+	outline: none;
+	border-color: var(--ani-blue);
+	box-shadow: 0 0 0 3px rgba(31, 109, 255, .18);
+}
+
+/* "Showing X" live count */
+.ani-blog-showing {
+	font-family: var(--ani-mono);
+	font-size: 0.85rem;
+	color: var(--ani-muted);
+	margin-block: 16px 0;
+}
+
+.ani-blog-showing__num {
+	color: var(--ani-ink);
+	font-weight: 600;
+	direction: ltr;
+	unicode-bidi: isolate;
+}
+
+/* No-results message */
+.ani-blog-noresults {
+	text-align: center;
+	padding-block: 56px;
+	color: var(--ani-muted);
+	font-size: 1.05rem;
+}
+
+/* ---------------------------------------------------------------- row list */
+.ani-blog-rows {
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+}
+
+/* Filter/pagination: hidden rows */
+.ani-blog-row.is-hidden {
+	display: none;
+}
+
+/* Horizontal row: thumbnail (inline-start) + body */
+.ani-blog-row {
+	display: grid;
+	grid-template-columns: 170px minmax(0, 1fr);
+	gap: 22px;
+	align-items: center;
+	padding-block: 22px;
+	border-block-end: 1px solid var(--ani-border);
+	transition: background-color 0.15s ease;
+}
+
+.ani-blog-row:first-child {
+	padding-block-start: 0;
+}
+
+.ani-blog-row:hover {
+	background: var(--ani-surface);
+}
+
+/* Thumbnail — 4:3, inline-start */
+.ani-blog-row__thumb {
+	display: block;
+	inline-size: 100%;
+	aspect-ratio: 4 / 3;
+	overflow: hidden;
+	border-radius: var(--ani-radius-card);
+	background: var(--ani-blueprint);
+}
+
+.ani-blog-row__thumb img {
+	inline-size: 100%;
+	block-size: 100%;
+	object-fit: cover;
+	display: block;
+	transition: transform 0.3s ease;
+}
+
+.ani-blog-row:hover .ani-blog-row__thumb img {
+	transform: scale(1.04);
+}
+
+.ani-blog-row__body {
+	min-inline-size: 0;
+}
+
+.ani-blog-row__cat {
+	font-family: var(--ani-mono);
+	font-size: 0.74rem;
+	font-weight: 500;
+	color: var(--ani-blue);
+	text-transform: uppercase;
+	margin-block-end: 8px;
+	display: block;
+}
+
+.ani-blog-row__title {
+	font-size: 1.15rem;
+	font-weight: 700;
+	color: var(--ani-ink);
+	line-height: 1.35;
+	margin-block-end: 8px;
+}
+
+.ani-blog-row__title a {
+	color: inherit;
+	text-decoration: none;
+	transition: color 0.15s ease;
+}
+
+.ani-blog-row__title a:hover {
+	color: var(--ani-blue);
+}
+
+.ani-blog-row__excerpt {
+	font-size: 0.92rem;
+	color: var(--ani-body);
+	line-height: 1.6;
+	margin-block-end: 10px;
+
+	/* 2-line clamp */
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
+.ani-blog-row__date {
+	font-family: var(--ani-mono);
+	font-size: 0.76rem;
+	color: var(--ani-muted);
+	/* LTR-isolate: dates are numeral sequences */
+	direction: ltr;
+	unicode-bidi: isolate;
+}
+
+/* ---------------------------------------------------------------- pagination */
+.ani-blog-pagination {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+	margin-block-start: 36px;
+}
+
+.ani-blog-page {
+	font-family: var(--ani-font);
+	font-size: 0.9rem;
+	font-weight: 600;
+	color: var(--ani-body);
+	background: var(--ani-white);
+	border: 1px solid var(--ani-border);
+	border-radius: var(--ani-radius-btn);
+	min-inline-size: 40px;
+	min-block-size: 40px;
+	padding-inline: 12px;
+	cursor: pointer;
+	transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.ani-blog-page:hover:not(:disabled):not(.is-current) {
+	border-color: var(--ani-blue);
+	color: var(--ani-blue);
+}
+
+.ani-blog-page.is-current {
+	background: var(--ani-blue);
+	border-color: var(--ani-blue);
+	color: var(--ani-white);
+	cursor: default;
+}
+
+.ani-blog-page:disabled {
+	opacity: 0.4;
+	cursor: not-allowed;
+}
+
+.ani-blog-page:focus-visible {
+	outline: none;
+	box-shadow: 0 0 0 3px rgba(31, 109, 255, .25);
+}
+
+/* Prev/next chevrons render as plain glyphs; size them up a touch */
+.ani-blog-page--prev,
+.ani-blog-page--next {
+	font-size: 1.2rem;
+	line-height: 1;
+}
+
+/* ---------------------------------------------------------------- CTA band (blog) */
+/* The shared eyebrow forces LTR (for Latin); this one is Hebrew → RTL. */
+.ani-blog-cta {
+	margin-block-start: 0;
+}
+
+.ani-blog-cta__eyebrow {
+	direction: rtl;
+	unicode-bidi: isolate;
+	letter-spacing: normal; /* no letter-spacing on Hebrew */
+	color: var(--ani-blue);
+}
+
+/* ---------------------------------------------------------------- no-posts fallback */
+.ani-blog-empty {
+	text-align: center;
+	padding-block: 80px;
+	color: var(--ani-muted);
+	font-size: 1.05rem;
+}
+
+/* ---------------------------------------------------------------- single post */
+.ani-single-post {
+	padding-block: 0 80px;
+}
+
+/* Featured image banner — full width, 480px max height */
+.ani-post-banner {
+	width: 100%;
+	max-height: 480px;
+	overflow: hidden;
+	background: var(--ani-blueprint);
+	margin-block-end: 0;
+}
+
+.ani-post-banner img {
+	width: 100%;
+	height: 480px;
+	object-fit: cover;
+	display: block;
+}
+
+/* Article container — inner width constrained for reading measure */
+.ani-post-inner {
+	max-width: 780px;
+	margin-inline: auto;
+	padding-inline: 24px;
+	padding-block-start: 48px;
+}
+
+/* Breadcrumb / back link */
+.ani-post-back {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	color: var(--ani-blue);
+	font-size: 0.88rem;
+	font-weight: 600;
+	text-decoration: none;
+	margin-block-end: 32px;
+	transition: gap 0.15s ease, color 0.15s ease;
+}
+
+.ani-post-back:hover {
+	color: var(--ani-blue-deep);
+	gap: 12px;
+}
+
+/* Post meta row */
+.ani-post-meta {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 16px;
+	margin-block-end: 24px;
+}
+
+.ani-post-meta__cat {
+	font-family: var(--ani-font-mono);
+	font-size: 0.78rem;
+	font-weight: 500;
+	color: var(--ani-white);
+	background: var(--ani-blue);
+	padding: 4px 12px;
+	border-radius: 4px;
+	text-decoration: none;
+}
+
+.ani-post-meta__cat:hover {
+	background: var(--ani-blue-deep);
+}
+
+.ani-post-meta__date {
+	font-family: var(--ani-font-mono);
+	font-size: 0.78rem;
+	color: var(--ani-muted);
+	direction: ltr;
+	unicode-bidi: isolate;
+}
+
+/* Post title (H1) */
+.ani-post-title {
+	font-size: clamp(1.6rem, 1.1rem + 1.8vw, 2.4rem);
+	font-weight: 800;
+	color: var(--ani-ink);
+	line-height: 1.2;
+	margin-block-end: 40px;
+	position: relative;
+	padding-block-end: 20px;
+}
+
+.ani-post-title::after {
+	content: "";
+	display: block;
+	width: 48px;
+	height: 3px;
+	background: var(--ani-blue);
+	border-radius: 2px;
+	margin-block-start: 16px;
+}
+
+/* Article body — readable measure, Heebo, 1.7 line-height */
+.ani-post-content {
+	font-family: var(--ani-font);
+	font-size: 1.05rem;
+	line-height: 1.78;
+	color: var(--ani-body);
+	/* ~70ch measure for readability */
+	max-width: 70ch;
+}
+
+.ani-post-content p {
+	margin-block-end: 1.4em;
+}
+
+.ani-post-content h2 {
+	font-size: 1.35rem;
+	font-weight: 700;
+	color: var(--ani-ink);
+	margin-block: 2em 0.6em;
+	line-height: 1.3;
+}
+
+.ani-post-content h3 {
+	font-size: 1.1rem;
+	font-weight: 700;
+	color: var(--ani-ink);
+	margin-block: 1.6em 0.5em;
+	line-height: 1.35;
+}
+
+.ani-post-content ul,
+.ani-post-content ol {
+	padding-inline-start: 1.5em;
+	margin-block-end: 1.4em;
+}
+
+.ani-post-content li {
+	margin-block-end: 0.5em;
+	line-height: 1.65;
+}
+
+.ani-post-content strong {
+	font-weight: 700;
+	color: var(--ani-ink);
+}
+
+/* Inline code / specs */
+.ani-post-content code {
+	font-family: var(--ani-font-mono);
+	font-size: 0.88em;
+	background: var(--ani-blueprint);
+	padding: 2px 6px;
+	border-radius: 3px;
+	direction: ltr;
+	unicode-bidi: isolate;
+}
+
+/* LTR isolation for inline latin/numbers */
+.ani-post-content .ltr,
+.ani-post-content [dir="ltr"] {
+	direction: ltr;
+	unicode-bidi: isolate;
+}
+
+/* ---------------------------------------------------------------- CTA band */
+.ani-post-cta {
+	background: var(--ani-ink);
+	border-radius: var(--ani-radius-card);
+	padding: 48px 40px;
+	margin-block-start: 56px;
+	text-align: center;
+}
+
+.ani-post-cta__eyebrow {
+	font-family: var(--ani-font-mono);
+	font-size: 0.8rem;
+	font-weight: 600;
+	color: #8FB4FF; /* light blue — readable on the dark (--ani-ink) CTA box; #1F6DFF fails contrast */
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	margin-block-end: 12px;
+	display: block;
+}
+
+.ani-post-cta__title {
+	font-size: 1.5rem;
+	font-weight: 800;
+	color: var(--ani-white);
+	line-height: 1.25;
+	margin-block-end: 8px;
+}
+
+.ani-post-cta__sub {
+	color: var(--ani-muted);
+	font-size: 0.95rem;
+	margin-block-end: 28px;
+}
+
+/* ---------------------------------------------------------------- responsive */
+
+/* Stack the 2-col body to a single column; featured drops ABOVE main */
+@media (max-width: 900px) {
+	/* minmax(0,1fr) (not 1fr) lets the column shrink below its content so the
+	   featured horizontal scroller stays inside the viewport instead of forcing
+	   the whole section ~1250px wide and spilling off-screen. */
+	.ani-blog-body {
+		grid-template-columns: minmax(0, 1fr);
+		gap: 40px;
+	}
+
+	/* No longer a sidebar — don't pin it; allow it to shrink. */
+	.ani-blog-featured {
+		position: static;
+		min-inline-size: 0;
+		max-inline-size: 100%;
+	}
+
+	/* Featured cards become a horizontal swipe row to save vertical space. */
+	.ani-blog-featured__list {
+		flex-direction: row;
+		flex-wrap: nowrap;
+		max-inline-size: 100%;
+		min-inline-size: 0;
+		overflow-x: auto;
+		gap: 16px;
+		padding-block-end: 8px;
+		-webkit-overflow-scrolling: touch;
+		scroll-snap-type: x proximity;
+	}
+
+	.ani-blog-featured__list > .ani-feat-card {
+		flex: 0 0 240px;
+		scroll-snap-align: start;
+	}
+}
+
+@media (max-width: 768px) {
+	.ani-blog-hero {
+		margin-block-end: 44px;
+	}
+
+	.ani-blog-body {
+		padding-block-end: 56px;
+	}
+
+	/* Controls stack; search + per-page go full width */
+	.ani-blog-controls__row {
+		align-items: stretch;
+	}
+
+	.ani-blog-search {
+		flex-basis: 100%;
+		inline-size: 100%;
+	}
+
+	/* Tabs become a horizontal scroller instead of wrapping */
+	.ani-blog-tabs {
+		flex-wrap: nowrap;
+		overflow-x: auto;
+		-webkit-overflow-scrolling: touch;
+		padding-block-end: 6px;
+	}
+
+	.ani-blog-tab {
+		flex-shrink: 0;
+	}
+
+	/* Rows: narrower thumb so the body keeps room */
+	.ani-blog-row {
+		grid-template-columns: 120px minmax(0, 1fr);
+		gap: 16px;
+	}
+
+	.ani-blog-row__title {
+		font-size: 1.05rem;
+	}
+
+	.ani-post-inner {
+		padding-inline: 20px;
+		padding-block-start: 32px;
+	}
+
+	.ani-post-banner img {
+		height: 280px;
+	}
+
+	.ani-post-cta {
+		padding: 36px 24px;
+	}
+
+	.ani-post-cta__title {
+		font-size: 1.25rem;
+	}
+}
+
+/* Phones: COMPACT side-by-side row — a small square thumbnail on the inline-
+   start + title/excerpt beside it. A small fixed thumb can never bleed off the
+   screen and keeps the list scannable (image + text stay small). */
+@media (max-width: 600px) {
+	.ani-blog-row {
+		grid-template-columns: 92px minmax(0, 1fr);
+		gap: 14px;
+		align-items: start;
+		padding-block: 18px;
+	}
+
+	.ani-blog-row__thumb {
+		inline-size: 92px;
+		max-inline-size: 92px;
+		aspect-ratio: 1 / 1;
+		max-block-size: 92px;
+		border-radius: 10px;
+	}
+
+	.ani-blog-row__thumb img {
+		inline-size: 100%;
+		block-size: 100%;
+		object-fit: cover;
+	}
+
+	.ani-blog-row__cat { font-size: 0.7rem; margin-block-end: 5px; }
+	.ani-blog-row__title { font-size: 0.98rem; line-height: 1.3; }
+	.ani-blog-row__excerpt {
+		font-size: 0.86rem;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+	}
+	.ani-blog-row__date { font-size: 0.74rem; }
+}
+
+/* Featured swipe-cards: cap width so the last one peeks (scroll affordance)
+   and cap the image height so they never bleed. */
+@media (max-width: 900px) {
+	.ani-blog-featured__list > .ani-feat-card { flex: 0 0 min(70vw, 230px); }
+	.ani-feat-card__thumb { aspect-ratio: 16 / 10; max-block-size: 150px; overflow: hidden; }
+	.ani-feat-card__thumb img { inline-size: 100%; block-size: 100%; object-fit: cover; }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+	.ani-post-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+/* ================================================================ ARCHIVE / SEARCH
+   Category, tag, date, author and search-results pages (archive.php / search.php).
+   Reuse the blog hero + row cards, but the body is a single centred column
+   (no featured sidebar, no JS filter bar). */
+.ani-blog-hero__eyebrow {
+	font-family: var(--ani-mono);
+	font-size: 0.8rem;
+	font-weight: 600;
+	letter-spacing: .08em;
+	text-transform: uppercase;
+	color: var(--ani-blue);
+	margin-block-end: 12px;
+}
+[dir="rtl"] .ani-blog-hero__eyebrow { letter-spacing: normal; }
+
+/* Single-column archive body (override the 2-col blog grid). */
+.ani-archive-body {
+	display: block;
+	max-inline-size: 820px;
+	margin-inline: auto;
+}
+.ani-archive-body .ani-blog-main { max-inline-size: none; }
+
+.ani-archive-backlink {
+	margin-block-end: 28px;
+	font-family: var(--ani-mono);
+	font-size: 0.86rem;
+}
+.ani-archive-backlink a {
+	color: var(--ani-blue);
+	font-weight: 600;
+}
+.ani-archive-backlink a:hover { color: var(--ani-blue-deep); }
+
+/* Native pagination (the_posts_pagination) — pill buttons in brand blue. */
+.ani-archive-pagination { margin-block-start: 48px; }
+.ani-archive-pagination .nav-links {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	justify-content: center;
+	align-items: center;
+}
+.ani-archive-pagination .page-numbers {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-inline-size: 44px;
+	block-size: 44px;
+	padding-inline: 12px;
+	border: 1px solid var(--ani-border);
+	border-radius: var(--ani-radius-btn);
+	background: var(--ani-white);
+	color: var(--ani-body);
+	font-weight: 600;
+	font-family: var(--ani-mono);
+	text-decoration: none;
+	transition: border-color .15s ease, color .15s ease, background .15s ease;
+}
+.ani-archive-pagination .page-numbers:hover {
+	border-color: var(--ani-blue);
+	color: var(--ani-blue);
+}
+.ani-archive-pagination .page-numbers.current {
+	background: var(--ani-blue);
+	border-color: var(--ani-blue);
+	color: var(--ani-white);
+}
+.ani-archive-pagination .page-numbers.dots {
+	border-color: transparent;
+	background: transparent;
+}

@@ -1,0 +1,177 @@
+/* =======================================================================
+   A.N.I Child Theme — Clients & Industries Page
+   Scoped to .ani-industries-page.
+   RTL-safe: logical CSS only (margin-inline / inset-inline-* / block-*).
+   No hardcoded hex — all via tokens.css custom properties.
+   No letter-spacing on Hebrew text.
+   LTR isolation on latin / numbers / firm-names via dir="ltr".
+   ======================================================================= */
+
+
+/* ── Page wrapper ─────────────────────────────────────────────────────── */
+
+.ani-industries-page {
+	overflow-x: hidden;
+}
+
+
+/* ── Hero ─────────────────────────────────────────────────────────────── */
+
+.ani-ind-hero {
+	padding-block-start: 72px;
+	padding-block-end: 56px;
+	background-color: var(--ani-surface);
+}
+
+.ani-ind-hero .section-title {
+	max-width: 28ch;
+}
+
+.ani-ind-hero__intro {
+	font-size: 1.1rem;
+	color: var(--ani-body);
+	line-height: 1.7;
+	max-width: 64ch;
+	margin-block-start: 16px;
+}
+
+
+/* ── Sectors section ──────────────────────────────────────────────────── */
+
+.ani-ind-sectors-section {
+	padding-block: 88px;
+}
+
+/* 3-column grid, 2 rows → 6 sector cards */
+.ani-ind-sector-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 24px;
+}
+
+.ani-ind-sector-card {
+	background: var(--ani-white);
+	border: 1px solid var(--ani-border);
+	border-radius: var(--ani-radius-card);
+	box-shadow: var(--ani-shadow-card);
+	padding: 28px 24px 30px;
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+	transition: box-shadow .18s ease, transform .18s ease;
+}
+
+.ani-ind-sector-card:hover {
+	box-shadow: 0 8px 28px rgba(31, 109, 255, .13);
+	transform: translateY(-3px);
+}
+
+/* Icon wrapper */
+.ani-ind-sector-card__icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 48px;
+	height: 48px;
+	border-radius: 12px;
+	background: rgba(31, 109, 255, .08);
+	color: var(--ani-blue);
+	flex-shrink: 0;
+}
+
+.ani-ind-sector-card__title {
+	font-size: 1.15rem;
+	font-weight: 700;
+	color: var(--ani-ink);
+	margin: 0;
+}
+
+.ani-ind-sector-card__desc {
+	font-size: 0.92rem;
+	color: var(--ani-body);
+	line-height: 1.6;
+	margin: 0;
+}
+
+
+/* ── Client logo wall ─────────────────────────────────────────────────── */
+
+.ani-ind-logos-section {
+	padding-block: 88px;
+}
+
+.ani-ind-logos-intro {
+	text-align: center;
+	font-size: 1rem;
+	color: var(--ani-body);
+	max-width: 52ch;
+	margin-inline: auto;
+	margin-block-end: 40px;
+	line-height: 1.7;
+}
+
+/* Reuses .ind-bare-logos + .ind-bare-logo from components.css.
+   Override column count to 4 for this page (8 items). */
+.ani-industries-page .ind-bare-logos {
+	grid-template-columns: repeat(4, 1fr);
+	max-width: 820px;
+	margin-inline: auto;
+	margin-block-end: 24px;
+}
+
+.ani-ind-logos-footer {
+	text-align: center;
+	font-size: 0.9rem;
+	color: var(--ani-muted);
+	font-style: italic;
+	margin-block-start: 4px;
+}
+
+
+/* ── CTA band ─────────────────────────────────────────────────────────── */
+
+/* .cta-band is defined in components.css — no extra rules needed here. */
+
+.ani-ind-cta .cta-band__title {
+	color: var(--ani-ink);
+}
+
+.ani-ind-cta .cta-band__title::after {
+	margin-inline: auto;
+}
+
+
+/* ── Responsive ─────────────────────────────────────────────────────── */
+
+@media (max-width: 960px) {
+	.ani-ind-sector-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	.ani-industries-page .ind-bare-logos {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+@media (max-width: 640px) {
+	.ani-ind-hero {
+		padding-block: 56px 40px;
+	}
+
+	.ani-ind-sector-grid {
+		grid-template-columns: 1fr;
+		max-width: 480px;
+		margin-inline: auto;
+	}
+
+	.ani-industries-page .ind-bare-logos {
+		grid-template-columns: repeat(3, 1fr);
+		max-width: none;
+	}
+}
+
+@media (max-width: 420px) {
+	.ani-industries-page .ind-bare-logos {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}

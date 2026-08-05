@@ -1,0 +1,258 @@
+/* ANI — Contact page (no form): brand-blue hero with WhatsApp + call CTAs,
+   detail cards, and a map. RTL-safe (logical properties). */
+
+.ani-contact { background: var(--ani-blueprint); }
+
+/* ============================================================ HERO (dark navy + blueprint grid) */
+.ani-contact-hero {
+	position: relative;
+	overflow: hidden;
+	background: var(--ani-ink);
+	color: var(--ani-white);
+	padding-block: clamp(64px, 9vw, 116px);
+	text-align: center;
+}
+/* Faint blueprint grid — industrial texture, not a colour gradient. */
+.ani-contact-hero::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background-image:
+		linear-gradient(rgba(31, 109, 255, .14) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(31, 109, 255, .14) 1px, transparent 1px);
+	background-size: 36px 36px;
+	mask-image: radial-gradient(circle at 50% 38%, #000 0%, transparent 78%);
+	-webkit-mask-image: radial-gradient(circle at 50% 38%, #000 0%, transparent 78%);
+	pointer-events: none;
+}
+
+.ani-contact-hero__inner {
+	position: relative;
+	z-index: 1;
+	max-inline-size: 760px;
+	margin-inline: auto;
+}
+
+.ani-contact-hero__eyebrow {
+	font-family: var(--ani-mono);
+	font-size: 0.85rem;
+	font-weight: 600;
+	color: #7FB0FF;
+	margin-block-end: 14px;
+}
+
+.ani-contact-hero__title {
+	font-size: clamp(2.4rem, 1.4rem + 4vw, 3.6rem);
+	font-weight: 800;
+	line-height: 1.05;
+	margin: 0;
+}
+.ani-contact-hero__title::after {
+	content: "";
+	display: block;
+	inline-size: 64px;
+	block-size: 4px;
+	border-radius: 2px;
+	background: var(--ani-blue);
+	margin: 18px auto 0;
+}
+
+.ani-contact-hero__intro {
+	color: rgba(255, 255, 255, .82);
+	font-size: clamp(1.02rem, 0.94rem + 0.4vw, 1.2rem);
+	line-height: 1.7;
+	max-inline-size: 56ch;
+	margin: 22px auto 0;
+}
+
+/* ---- Primary action buttons ---- */
+.ani-contact-hero__actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 16px;
+	justify-content: center;
+	margin-block-start: 40px;
+}
+
+.ani-contact-cta {
+	display: inline-flex;
+	align-items: center;
+	gap: 14px;
+	padding: 16px 26px;
+	border-radius: 14px;
+	text-decoration: none;
+	font-weight: 700;
+	min-inline-size: 248px;
+	transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+	box-shadow: 0 10px 26px rgba(0, 0, 0, .28);
+}
+.ani-contact-cta:hover { transform: translateY(-2px); }
+.ani-contact-cta svg { inline-size: 30px; block-size: 30px; flex-shrink: 0; }
+
+.ani-contact-cta__text {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	line-height: 1.25;
+	text-align: start;
+}
+.ani-contact-cta__label { font-size: 1.02rem; }
+.ani-contact-cta__sub {
+	font-family: var(--ani-mono);
+	font-size: 0.82rem;
+	font-weight: 500;
+	opacity: .85;
+}
+
+/* WhatsApp — brand green */
+.ani-contact-cta--whatsapp { background: #25D366; color: #053D26; }
+.ani-contact-cta--whatsapp:hover { background: #20c35d; color: #053D26; }
+
+/* Call — white on the dark hero */
+.ani-contact-cta--call { background: var(--ani-white); color: var(--ani-ink); }
+.ani-contact-cta--call:hover { background: #eef3fb; color: var(--ani-ink); }
+.ani-contact-cta--call svg { color: var(--ani-blue); }
+
+/* ============================================================ DETAILS + MAP */
+.ani-contact-body {
+	padding-block: clamp(48px, 7vw, 88px);
+}
+
+.ani-contact-grid {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+	gap: 32px;
+	align-items: stretch;
+}
+
+.ani-contact-cards {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 16px;
+}
+
+.ani-contact-card {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	padding: 24px;
+	background: var(--ani-white);
+	border: 1px solid var(--ani-border);
+	border-radius: var(--ani-radius-card);
+	box-shadow: var(--ani-shadow-card);
+}
+.ani-contact-card__icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	inline-size: 46px;
+	block-size: 46px;
+	border-radius: 12px;
+	background: rgba(31, 109, 255, .1);
+	color: var(--ani-blue);
+	margin-block-end: 6px;
+}
+.ani-contact-card__icon svg { inline-size: 22px; block-size: 22px; }
+.ani-contact-card__label {
+	font-family: var(--ani-mono);
+	font-size: 0.78rem;
+	font-weight: 600;
+	color: var(--ani-muted);
+}
+.ani-contact-card__value {
+	font-size: 1.05rem;
+	font-weight: 700;
+	color: var(--ani-ink);
+	text-decoration: none;
+}
+a.ani-contact-card__value:hover { color: var(--ani-blue); }
+
+.ani-contact-map {
+	min-block-size: 320px;
+	border-radius: var(--ani-radius-card);
+	overflow: hidden;
+	border: 1px solid var(--ani-border);
+	box-shadow: var(--ani-shadow-card);
+}
+.ani-contact-map iframe { display: block; inline-size: 100%; block-size: 100%; }
+
+/* ============================================================ RESPONSIVE */
+@media (max-width: 880px) {
+	.ani-contact-grid { grid-template-columns: 1fr; }
+	.ani-contact-map { min-block-size: 280px; }
+}
+@media (max-width: 520px) {
+	.ani-contact-cards { grid-template-columns: 1fr; }
+	.ani-contact-cta { inline-size: 100%; justify-content: center; }
+}
+
+/* ============================================================ CONTACT BUTTONS (round 4)
+   Replaced the oversized detail cards with compact call + email buttons; the
+   address lives on the map, so the map is the main surface. */
+.ani-contact-buttons {
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+	align-content: start;
+}
+.ani-contact-btn {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	padding: 18px 22px;
+	background: var(--ani-white);
+	border: 1px solid var(--ani-border);
+	border-radius: var(--ani-radius-card);
+	box-shadow: var(--ani-shadow-card);
+	text-decoration: none;
+	transition: border-color .15s ease, transform .15s ease, box-shadow .15s ease;
+}
+.ani-contact-btn:hover {
+	border-color: var(--ani-blue);
+	transform: translateY(-2px);
+	box-shadow: 0 12px 28px rgba(31, 109, 255, .14);
+}
+.ani-contact-btn__icon {
+	flex-shrink: 0;
+	inline-size: 46px;
+	block-size: 46px;
+	border-radius: 12px;
+	background: rgba(31, 109, 255, .1);
+	color: var(--ani-blue);
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+}
+.ani-contact-btn__icon svg { inline-size: 22px; block-size: 22px; }
+.ani-contact-btn__text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.ani-contact-btn__label {
+	font-family: var(--ani-mono);
+	font-size: 0.76rem;
+	font-weight: 600;
+	color: var(--ani-muted);
+}
+.ani-contact-btn__value {
+	font-size: 1.08rem;
+	font-weight: 700;
+	color: var(--ani-ink);
+}
+.ani-contact-btn:hover .ani-contact-btn__value { color: var(--ani-blue); }
+
+/* The map should be the larger surface beside the buttons. */
+.ani-contact-grid { grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.4fr); }
+.ani-contact-grid .ani-contact-map { min-block-size: 360px; }
+
+@media (max-width: 880px) {
+	.ani-contact-grid { grid-template-columns: 1fr; }
+	.ani-contact-buttons { flex-direction: row; flex-wrap: wrap; }
+	.ani-contact-btn { flex: 1 1 220px; }
+	.ani-contact-grid .ani-contact-map { min-block-size: 300px; }
+}
+@media (max-width: 480px) {
+	.ani-contact-buttons { flex-direction: column; }
+	/* In a column the 220px flex-basis would become height — reset to content. */
+	.ani-contact-btn { flex: 0 0 auto; }
+}

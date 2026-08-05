@@ -1,0 +1,448 @@
+/* =======================================================================
+   A.N.I — About / אודות Page Styles
+   Sections: hero · chain · values · vision · tech · clients · CTA
+   RTL-safe: logical CSS only (inline-start/end, block-start/end).
+   No hardcoded hex — all via tokens.css custom properties.
+   No letter-spacing on Hebrew text.
+   ======================================================================= */
+
+/* ── 0. Page wrapper ──────────────────────────────────────────────────── */
+
+.ani-about-page {
+	overflow-x: hidden;
+}
+
+
+/* ── 1. Hero ──────────────────────────────────────────────────────────── */
+
+.ani-about-hero {
+	position: relative;
+	overflow: hidden;
+	background-color: var(--ani-surface);
+	background-image:
+		linear-gradient(to left, rgba(255,255,255,.92) 0%, rgba(255,255,255,.5) 30%, rgba(255,255,255,0) 62%),
+		url("../blueprint.png");
+	background-size: cover, cover;
+	background-position: center, center left;
+	background-repeat: no-repeat, no-repeat;
+	padding-block: clamp(56px, 5vw, 96px);
+}
+
+.ani-about-hero__inner {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 48px;
+	align-items: center;
+}
+
+/* Text sits on the right column (RTL-natural inline-start = right side) */
+.ani-about-hero__copy {
+	max-width: 46ch;
+	order: 1;
+	justify-self: start;
+}
+
+.ani-about-hero__copy .section-title {
+	font-size: clamp(2.4rem, 1.4rem + 3.6vw, 4rem);
+	margin-block-end: 0;
+}
+
+/* Positioning line — weighted, not oversized */
+.ani-about-hero__positioning {
+	font-size: clamp(1.05rem, 0.9rem + 0.6vw, 1.25rem);
+	font-weight: 700;
+	color: var(--ani-ink);
+	margin-block: 18px 14px;
+	line-height: 1.4;
+}
+
+/* One-line description */
+.ani-about-hero__desc {
+	font-size: 1rem;
+	color: var(--ani-body);
+	line-height: 1.72;
+	max-width: 50ch;
+}
+
+/* Media slot — part photo on the left in RTL */
+.ani-about-hero__media {
+	order: 2;
+}
+
+
+/* ── 2. One Stop Shop chain ───────────────────────────────────────────── */
+
+.ani-about-chain__intro {
+	text-align: center;
+	font-size: 1.05rem;
+	color: var(--ani-body);
+	max-width: 58ch;
+	margin-inline: auto;
+	margin-block-end: 40px;
+	line-height: 1.7;
+}
+
+/* Widen the process strip to show all 9 steps without too-aggressive clipping */
+.ani-about-chain__steps {
+	padding-block-end: 16px;
+}
+
+/* Override process__step to keep step labels balanced on small widths */
+.ani-about-chain__steps .process__label {
+	font-size: 0.82rem;
+	white-space: normal;
+	text-align: center;
+}
+
+
+/* ── 3. Value-props cards ─────────────────────────────────────────────── */
+
+/* 5-card row: 3 + 2 on medium, 1 on small */
+.ani-about-values__grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 24px;
+}
+
+/* Last 2 cards centered on their own row */
+@media (min-width: 761px) {
+	.ani-about-values__grid {
+		/* The 5th card (index 4) spans — trick: put the last 2 in a pseudo-center */
+		grid-template-columns: repeat(6, 1fr);
+	}
+
+	.ani-about-value-card:nth-child(1) { grid-column: span 2; }
+	.ani-about-value-card:nth-child(2) { grid-column: span 2; }
+	.ani-about-value-card:nth-child(3) { grid-column: span 2; }
+	.ani-about-value-card:nth-child(4) { grid-column: 2 / span 2; }
+	.ani-about-value-card:nth-child(5) { grid-column: 4 / span 2; }
+}
+
+.ani-about-value-card {
+	text-align: start;
+}
+
+.ani-about-value-card .card__icon {
+	justify-content: flex-start;
+	margin-inline-start: 0;
+}
+
+.ani-about-value-card .card__title {
+	font-size: 1.1rem;
+	text-align: start;
+}
+
+.ani-about-value-card .card__blurb {
+	text-align: start;
+}
+
+
+/* ── 4. Vision band ───────────────────────────────────────────────────── */
+
+.ani-about-vision {
+	background-color: var(--ani-ink);
+	background-image:
+		linear-gradient(rgba(13,20,27,.82), rgba(13,20,27,.82)),
+		url("../blueprint.png");
+	background-size: cover, cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	padding-block: 80px;
+}
+
+.ani-about-vision__inner {
+	max-width: 820px;
+	margin-inline: auto;
+	text-align: center;
+}
+
+.ani-about-vision__inner .eyebrow {
+	color: var(--ani-blue);
+	opacity: .9;
+}
+
+.ani-about-vision__title {
+	font-size: clamp(1.4rem, 1rem + 1.5vw, 1.9rem);
+	font-weight: 800;
+	color: var(--ani-white);
+	margin-block: 10px 24px;
+	/* Blue underline via a manual element (not ::after so it centers cleanly) */
+}
+
+/* Manual underline element */
+.ani-about-vision__title::after {
+	content: "";
+	display: block;
+	width: 48px;
+	height: 3px;
+	background: var(--ani-blue);
+	border-radius: 2px;
+	margin-block-start: 14px;
+	margin-inline: auto;
+}
+
+.ani-about-vision__quote {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+.ani-about-vision__quote p {
+	font-size: clamp(1rem, 0.88rem + 0.5vw, 1.18rem);
+	color: rgba(255,255,255,.82);
+	line-height: 1.8;
+	font-weight: 400;
+	max-width: 74ch;
+	margin-inline: auto;
+}
+
+
+/* ── 5. Equipment / Technologies ──────────────────────────────────────── */
+
+.ani-about-tech__intro {
+	text-align: center;
+	font-size: 1rem;
+	color: var(--ani-body);
+	max-width: 56ch;
+	margin-inline: auto;
+	margin-block-end: 40px;
+	line-height: 1.7;
+}
+
+.ani-about-tech__grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 24px;
+}
+
+/* Tech category card */
+.ani-tech-card {
+	background: var(--ani-white);
+	border: 1px solid var(--ani-border);
+	border-radius: var(--ani-radius-card);
+	box-shadow: var(--ani-shadow-card);
+	padding: 28px 26px 30px;
+}
+
+/* Category heading with inline icon */
+.ani-tech-card__cat {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	font-size: 1rem;
+	font-weight: 700;
+	color: var(--ani-ink);
+	margin: 0 0 20px;
+	padding-block-end: 14px;
+	border-block-end: 1px solid var(--ani-border);
+}
+
+.ani-tech-card__cat svg {
+	color: var(--ani-blue);
+	flex-shrink: 0;
+}
+
+/* Machine list */
+.ani-tech-card__list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+}
+
+.ani-tech-card__list li {
+	display: flex;
+	flex-direction: column;
+	gap: 3px;
+}
+
+/* Machine name — LTR-isolated Latin, IBM Plex Mono, bold */
+.ani-tech-name {
+	font-family: var(--ani-mono);
+	font-size: 0.9rem;
+	font-weight: 500;
+	color: var(--ani-ink);
+	direction: ltr;
+	unicode-bidi: isolate;
+	display: block;
+}
+
+/* Spec / description — regular body text, muted */
+.ani-tech-spec {
+	font-size: 0.82rem;
+	color: var(--ani-muted);
+	line-height: 1.5;
+	display: block;
+}
+
+
+/* ── 6. Clients & Industries ──────────────────────────────────────────── */
+
+.ani-about-clients__intro {
+	text-align: center;
+	font-size: 1rem;
+	color: var(--ani-body);
+	max-width: 52ch;
+	margin-inline: auto;
+	margin-block-end: 28px;
+	line-height: 1.7;
+}
+
+/* Sector tag pills */
+.ani-about-sectors {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 8px 12px;
+	margin-block-end: 40px;
+}
+
+.ani-about-sector {
+	display: inline-block;
+	background: rgba(31, 109, 255, .07);
+	border: 1px solid rgba(31, 109, 255, .22);
+	border-radius: 999px;
+	padding: 6px 18px;
+	font-size: 0.88rem;
+	font-weight: 600;
+	color: var(--ani-blue);
+}
+
+/* Logo grid */
+.ani-about-logos {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 18px;
+	margin-block-end: 24px;
+	max-inline-size: 780px;
+	margin-inline: auto;
+}
+
+/* Each logo cell */
+.ani-about-logo-cell {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 26px 18px;
+	background: var(--ani-white);
+	border: 1px solid var(--ani-border);
+	border-radius: 12px;
+	min-block-size: 116px;
+	transition: border-color .18s ease, box-shadow .18s ease;
+}
+
+.ani-about-logo-cell:hover {
+	border-color: rgba(31, 109, 255, .3);
+	box-shadow: 0 2px 12px rgba(31, 109, 255, .1);
+}
+
+/* Logo image — grayscale, size-capped */
+.ani-about-logo {
+	max-block-size: 58px;
+	max-inline-size: 175px;
+	width: auto;
+	height: auto;
+	object-fit: contain;
+	display: block;
+	filter: grayscale(1);
+	opacity: .6;
+	transition: filter .2s ease, opacity .2s ease;
+	margin-inline: auto;
+}
+
+.ani-about-logo-cell:hover .ani-about-logo {
+	filter: grayscale(0);
+	opacity: 1;
+}
+
+/* Text-only logo cell */
+.ani-about-logo-text {
+	font-size: 1rem;
+	font-weight: 700;
+	color: var(--ani-muted);
+	opacity: .7;
+	direction: ltr;
+	unicode-bidi: isolate;
+}
+
+.ani-about-clients__footer {
+	text-align: center;
+	font-size: 0.9rem;
+	color: var(--ani-muted);
+	font-style: italic;
+	margin-block-start: 8px;
+}
+
+
+/* ── 7. CTA band ──────────────────────────────────────────────────────── */
+
+/* .cta-band is defined in components.css — no extra rules needed here.
+   Only section-title overrides for the dark blueprint background. */
+
+.ani-about-cta .cta-band__title {
+	color: var(--ani-ink);
+}
+
+.ani-about-cta .cta-band__title::after {
+	margin-inline: auto;
+}
+
+
+/* ── Responsive ───────────────────────────────────────────────────────── */
+
+@media (max-width: 1100px) {
+	/* keep the 3×3 grid on desktop/tablet */
+	.ani-about-logos { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 960px) {
+	.ani-about-tech__grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 880px) {
+	.ani-about-values__grid {
+		grid-template-columns: 1fr 1fr !important;
+	}
+
+	.ani-about-value-card:nth-child(1),
+	.ani-about-value-card:nth-child(2),
+	.ani-about-value-card:nth-child(3),
+	.ani-about-value-card:nth-child(4),
+	.ani-about-value-card:nth-child(5) {
+		grid-column: span 1 !important;
+	}
+
+	.ani-about-logos { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 760px) {
+	.ani-about-hero__inner {
+		grid-template-columns: 1fr;
+		gap: 32px;
+	}
+
+	.ani-about-hero__media { order: -1; }
+
+	.ani-about-values__grid {
+		grid-template-columns: 1fr !important;
+	}
+
+	.ani-about-value-card:nth-child(1),
+	.ani-about-value-card:nth-child(2),
+	.ani-about-value-card:nth-child(3),
+	.ani-about-value-card:nth-child(4),
+	.ani-about-value-card:nth-child(5) {
+		grid-column: span 1 !important;
+	}
+
+	.ani-about-tech__grid { grid-template-columns: 1fr; }
+
+	.ani-about-logos { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 420px) {
+	.ani-about-logos { grid-template-columns: repeat(2, 1fr); }
+	.ani-about-sectors { gap: 6px 8px; }
+}

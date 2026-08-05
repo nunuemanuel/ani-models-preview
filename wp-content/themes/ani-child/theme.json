@@ -1,0 +1,149 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 3,
+  "settings": {
+    "color": {
+      "defaultPalette": false,
+      "palette": [
+        {
+          "slug": "ani-blue",
+          "color": "#1F6DFF",
+          "name": "ANI Blue (primary accent)"
+        },
+        {
+          "slug": "ani-blue-deep",
+          "color": "#1B4DCB",
+          "name": "ANI Blue Deep (hover)"
+        },
+        {
+          "slug": "ani-ink",
+          "color": "#0D141B",
+          "name": "ANI Ink (headlines)"
+        },
+        {
+          "slug": "ani-body",
+          "color": "#1E2A38",
+          "name": "ANI Body text"
+        },
+        {
+          "slug": "ani-muted",
+          "color": "#798AA1",
+          "name": "ANI Muted (secondary text)"
+        },
+        {
+          "slug": "ani-border",
+          "color": "#D7DFEA",
+          "name": "ANI Border"
+        },
+        {
+          "slug": "ani-blueprint",
+          "color": "#F3F6FB",
+          "name": "ANI Blueprint (section bg)"
+        },
+        {
+          "slug": "ani-surface",
+          "color": "#F7F9FD",
+          "name": "ANI Surface (alt light)"
+        },
+        {
+          "slug": "ani-white",
+          "color": "#FFFFFF",
+          "name": "ANI White"
+        }
+      ]
+    },
+    "typography": {
+      "fontFamilies": [
+        {
+          "fontFamily": "'Heebo', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif",
+          "slug": "heebo",
+          "name": "Heebo (primary — Hebrew + Latin)"
+        },
+        {
+          "fontFamily": "'IBM Plex Mono', 'Courier New', Courier, monospace",
+          "slug": "ibm-plex-mono",
+          "name": "IBM Plex Mono (specs / tolerances)"
+        }
+      ],
+      "fontSizes": [
+        { "slug": "sm",   "size": "0.875rem", "name": "Small"   },
+        { "slug": "base", "size": "1rem",     "name": "Base"    },
+        { "slug": "md",   "size": "1.125rem", "name": "Medium"  },
+        { "slug": "lg",   "size": "1.25rem",  "name": "Large"   },
+        { "slug": "xl",   "size": "1.5rem",   "name": "X-Large" },
+        { "slug": "2xl",  "size": "2rem",     "name": "2X-Large"},
+        { "slug": "3xl",  "size": "2.5rem",   "name": "3X-Large"},
+        { "slug": "4xl",  "size": "3rem",     "name": "4X-Large"}
+      ]
+    },
+    "spacing": {
+      "spacingScale": {
+        "steps": 7,
+        "mediumStep": 1.5,
+        "unit": "rem",
+        "operator": "*",
+        "increment": 1.5,
+        "steps": 7
+      }
+    },
+    "layout": {
+      "contentSize": "800px",
+      "wideSize": "1200px"
+    }
+  },
+  "styles": {
+    "color": {
+      "background": "#FFFFFF",
+      "text": "#1E2A38"
+    },
+    "typography": {
+      "fontFamily": "var:preset|font-family|heebo",
+      "fontSize": "var:preset|font-size|base",
+      "lineHeight": "1.65"
+    },
+    "elements": {
+      "h1": {
+        "color": { "text": "#0D141B" },
+        "typography": {
+          "fontWeight": "800",
+          "lineHeight": "1.18"
+        }
+      },
+      "h2": {
+        "color": { "text": "#0D141B" },
+        "typography": {
+          "fontWeight": "800",
+          "lineHeight": "1.18"
+        }
+      },
+      "h3": {
+        "color": { "text": "#0D141B" },
+        "typography": {
+          "fontWeight": "700",
+          "lineHeight": "1.25"
+        }
+      },
+      "link": {
+        "color": { "text": "#1F6DFF" },
+        ":hover": {
+          "color": { "text": "#1B4DCB" }
+        }
+      },
+      "button": {
+        "color": {
+          "background": "#1F6DFF",
+          "text": "#FFFFFF"
+        },
+        "typography": {
+          "fontWeight": "600"
+        },
+        "border": {
+          "radius": "8px"
+        },
+        ":hover": {
+          "color": { "background": "#1B4DCB" }
+        }
+      }
+    }
+  }
+}

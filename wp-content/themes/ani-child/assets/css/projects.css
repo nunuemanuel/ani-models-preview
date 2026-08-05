@@ -1,0 +1,198 @@
+/* =======================================================================
+   A.N.I Child Theme — Projects / Portfolio Page
+   Scoped to .ani-projects-page.
+   RTL-safe: logical CSS only (margin-inline / inset-inline / block-*).
+   No hardcoded hex — all via tokens.css custom properties.
+   No letter-spacing on Hebrew text (per brand rules).
+   LTR isolation on latin/numbers via dir="ltr".
+   ======================================================================= */
+
+
+/* ============================================================ HERO */
+
+.ani-projects-hero {
+	padding-block-start: 72px;
+	padding-block-end: 56px;
+}
+
+.ani-projects-hero .section-title {
+	max-width: 20ch;
+}
+
+.ani-projects-hero__intro {
+	font-size: 1.1rem;
+	color: var(--ani-body);
+	line-height: 1.7;
+	max-width: 64ch;
+	margin-block-start: 16px;
+}
+
+
+/* ============================================================ FILTER TABS */
+
+.ani-projects-filters {
+	margin-block-end: 40px;
+}
+
+.ani-projects-filter-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.ani-projects-filter-btn {
+	display: inline-flex;
+	align-items: center;
+	min-height: 40px;
+	padding: 8px 20px;
+	background: var(--ani-white);
+	border: 1px solid var(--ani-border);
+	border-radius: 999px;
+	font-family: var(--ani-font);
+	font-size: 0.92rem;
+	font-weight: 600;
+	color: var(--ani-body);
+	cursor: pointer;
+	transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.ani-projects-filter-btn:hover {
+	border-color: var(--ani-blue);
+	color: var(--ani-blue);
+}
+
+.ani-projects-filter-btn.is-active,
+.ani-projects-filter-btn[aria-pressed="true"] {
+	background: var(--ani-blue);
+	border-color: var(--ani-blue);
+	color: var(--ani-white);
+	box-shadow: 0 4px 14px rgba(31, 109, 255, 0.28);
+}
+
+.ani-projects-filter-btn:focus-visible {
+	outline: 3px solid var(--ani-blue);
+	outline-offset: 3px;
+}
+
+
+/* ============================================================ GALLERY GRID */
+
+.ani-projects-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 24px;
+}
+
+/* JS progressive enhancement: hidden items */
+.ani-project-card.is-hidden {
+	display: none;
+}
+
+
+/* ============================================================ CARD */
+
+.ani-project-card {
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+	margin: 0;
+	background: var(--ani-white);
+	border: 1px solid var(--ani-border);
+	border-radius: var(--ani-radius-card);
+	box-shadow: var(--ani-shadow-card);
+	overflow: hidden;
+	transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+
+.ani-project-card:hover,
+.ani-project-card:focus-within {
+	box-shadow: 0 10px 28px rgba(31, 109, 255, 0.13);
+	transform: translateY(-3px);
+	border-color: rgba(31, 109, 255, 0.3);
+}
+
+/* Media wrapper — fixed aspect ratio to prevent CLS */
+.ani-project-card__media {
+	aspect-ratio: 3 / 2;
+	overflow: hidden;
+	background: var(--ani-blueprint);
+	display: block;
+}
+
+.ani-project-card__media picture {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+.ani-project-card__media img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+	transition: transform 0.35s ease;
+}
+
+.ani-project-card:hover .ani-project-card__media img {
+	transform: scale(1.04);
+}
+
+/* Caption bar */
+.ani-project-card__caption {
+	font-size: 0.82rem;
+	font-weight: 500;
+	color: var(--ani-muted);
+	line-height: 1.45;
+	padding: 10px 14px 12px;
+	background: var(--ani-white);
+	border-block-start: 1px solid var(--ani-border);
+}
+
+
+/* ============================================================ RESPONSIVE */
+
+@media (max-width: 960px) {
+	.ani-projects-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (max-width: 600px) {
+	.ani-projects-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.ani-projects-hero {
+		padding-block-start: 52px;
+		padding-block-end: 40px;
+	}
+
+	.ani-projects-filter-list {
+		gap: 6px;
+	}
+
+	.ani-projects-filter-btn {
+		font-size: 0.85rem;
+		padding: 7px 16px;
+	}
+}
+
+/* prefers-reduced-motion: no hover animations */
+@media (prefers-reduced-motion: reduce) {
+	.ani-project-card,
+	.ani-project-card__media img {
+		transition: none;
+	}
+	.ani-project-card:hover {
+		transform: none;
+	}
+	.ani-project-card:hover .ani-project-card__media img {
+		transform: none;
+	}
+	.ani-projects-filter-btn {
+		transition: none;
+	}
+}

@@ -1,0 +1,170 @@
+/* =======================================================================
+   A.N.I — Lead Popup (popup.css)
+   Modal overlay + centered card using brand tokens.
+   RTL-safe: logical CSS only (inline-start/end, block-start/end).
+   No hardcoded hex — all values from tokens.css variables.
+   Reduced-motion: transitions collapsed to zero, no animation.
+   ======================================================================= */
+
+/* ── Overlay ─────────────────────────────────────────────────────────── */
+.ani-popup-overlay {
+	position: fixed;
+	inset: 0;
+	z-index: 99990;
+	background: rgba(13, 20, 27, 0.55);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding-inline: 16px;
+	padding-block: 16px;
+
+	/* Hidden state */
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.25s ease, visibility 0s linear 0.25s;
+}
+
+/* Open state — toggled by JS adding .is-open to the overlay */
+.ani-popup-overlay.is-open {
+	opacity: 1;
+	visibility: visible;
+	transition: opacity 0.25s ease;
+}
+
+/* ── Dialog card ─────────────────────────────────────────────────────── */
+.ani-popup-dialog {
+	position: relative;
+	background: var(--ani-white);
+	border-radius: var(--ani-radius-card);
+	box-shadow: 0 4px 12px rgba(13, 20, 27, 0.08),
+	            0 24px 60px rgba(13, 20, 27, 0.14);
+	width: 100%;
+	max-width: 480px;
+	max-block-size: 90vh;
+	overflow-y: auto;
+	padding-block: 40px;
+	padding-inline: 36px;
+
+	/* Slide-up on open */
+	transform: translateY(20px);
+	transition: transform 0.28s ease;
+}
+
+.ani-popup-overlay.is-open .ani-popup-dialog {
+	transform: translateY(0);
+}
+
+/* ── Close button ────────────────────────────────────────────────────── */
+.ani-popup__close {
+	position: absolute;
+	inset-block-start: 14px;
+	inset-inline-end: 14px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+	border: none;
+	background: transparent;
+	color: var(--ani-muted);
+	cursor: pointer;
+	transition: background 0.15s ease, color 0.15s ease;
+	padding: 0;
+	line-height: 1;
+}
+
+.ani-popup__close:hover,
+.ani-popup__close:focus-visible {
+	background: var(--ani-blueprint);
+	color: var(--ani-ink);
+}
+
+.ani-popup__close:focus-visible {
+	outline: 3px solid var(--ani-blue);
+	outline-offset: 2px;
+}
+
+/* ── Heading ─────────────────────────────────────────────────────────── */
+.ani-popup__heading {
+	font-size: 1.45rem;
+	font-weight: 800;
+	color: var(--ani-ink);
+	line-height: 1.2;
+	margin-block-end: 8px;
+	padding-inline-end: 32px; /* clear the close button */
+}
+
+/* ── Subtext ─────────────────────────────────────────────────────────── */
+.ani-popup__subtext {
+	font-size: 0.97rem;
+	color: var(--ani-muted);
+	line-height: 1.55;
+	margin-block-end: 28px;
+}
+
+/* ── Form area — inherits .ani-form-wrap styles from forms.css ───────── */
+.ani-popup__form {
+	width: 100%;
+}
+
+/* Hide the legend inside the popup — the popup heading already serves that role */
+.ani-popup__form .ani-form__legend {
+	display: none;
+}
+
+/* ── Accent bar at block-start of card ──────────────────────────────── */
+.ani-popup-dialog::before {
+	content: "";
+	display: block;
+	position: absolute;
+	inset-block-start: 0;
+	inset-inline-start: 0;
+	inset-inline-end: 0;
+	height: 4px;
+	background: var(--ani-blue);
+	border-radius: var(--ani-radius-card) var(--ani-radius-card) 0 0;
+}
+
+/* ── Mobile — full-width bottom sheet ───────────────────────────────── */
+@media (max-width: 520px) {
+	.ani-popup-overlay {
+		align-items: flex-end;
+		padding-inline: 0;
+		padding-block: 0;
+	}
+
+	.ani-popup-dialog {
+		max-width: 100%;
+		max-block-size: 92vh;
+		border-radius: var(--ani-radius-card) var(--ani-radius-card) 0 0;
+		padding-block: 32px;
+		padding-inline: 24px;
+		/* Slide from below on mobile */
+		transform: translateY(100%);
+	}
+
+	.ani-popup-overlay.is-open .ani-popup-dialog {
+		transform: translateY(0);
+	}
+
+	.ani-popup-dialog::before {
+		border-radius: var(--ani-radius-card) var(--ani-radius-card) 0 0;
+	}
+}
+
+/* ── Prevent body scroll while popup is open ────────────────────────── */
+body.ani-popup-open {
+	overflow: hidden;
+}
+
+/* ── Reduced motion: collapse all transitions/transforms ─────────────── */
+@media (prefers-reduced-motion: reduce) {
+	.ani-popup-overlay,
+	.ani-popup-overlay.is-open,
+	.ani-popup-dialog,
+	.ani-popup-overlay.is-open .ani-popup-dialog {
+		transition: none;
+		transform: none;
+	}
+}

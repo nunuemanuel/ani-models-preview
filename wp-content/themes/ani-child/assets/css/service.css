@@ -1,0 +1,1037 @@
+/* =======================================================================
+   A.N.I Child Theme — Services Hub + Capability Pages
+   Scoped to .ani-services-page (hub) and .ani-service-page (detail).
+   RTL-safe: logical CSS only (margin-inline / inset-inline / block-*).
+   No hardcoded hex — all via tokens.css custom properties.
+   No letter-spacing on Hebrew text (per brand rules).
+   LTR isolation on latin / numbers / machine-names via dir="ltr".
+   ======================================================================= */
+
+
+/* =============================================================== HUB HERO */
+
+.ani-services-hero {
+	padding-block-start: 72px;
+	padding-block-end: 56px;
+}
+
+.ani-services-hero .section-title {
+	max-width: 24ch;
+}
+
+.ani-services-hero__intro {
+	font-size: 1.1rem;
+	color: var(--ani-body);
+	line-height: 1.7;
+	max-width: 60ch;
+	margin-block: 16px 32px;
+}
+
+/* Three inline value props row */
+.ani-services-hero__props {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px 32px;
+}
+
+.ani-services-hero__prop {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	font-size: 0.95rem;
+	font-weight: 600;
+	color: var(--ani-body);
+}
+
+.ani-services-hero__prop-icon {
+	display: inline-flex;
+	color: var(--ani-blue);
+	flex-shrink: 0;
+}
+
+
+/* =============================================================== CAP GRID (hub) */
+
+.ani-services-grid {
+	padding-block: 88px;
+}
+
+/* 5-card grid: 3 on top row, 2 on bottom (centred) via auto-fill */
+.ani-cap-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 28px;
+}
+
+/* Part photo — fixed-height, object-cover */
+.ani-cap-card {
+	background: var(--ani-white);
+	border: 1px solid var(--ani-border);
+	border-radius: var(--ani-radius-card);
+	box-shadow: var(--ani-shadow-card);
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	transition: box-shadow .18s ease, transform .18s ease;
+}
+
+.ani-cap-card:hover {
+	box-shadow: 0 8px 28px rgba(31, 109, 255, .14);
+	transform: translateY(-3px);
+}
+
+.ani-cap-card__photo {
+	width: 100%;
+	height: 200px;
+	overflow: hidden;
+	flex-shrink: 0;
+}
+
+.ani-cap-card__photo img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+	transition: transform .3s ease;
+}
+
+.ani-cap-card:hover .ani-cap-card__photo img {
+	transform: scale(1.03);
+}
+
+.ani-cap-card__body {
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+	padding: 24px 22px 22px;
+	flex: 1 1 auto;
+}
+
+.ani-cap-card__title {
+	font-size: 1.15rem;
+	font-weight: 700;
+	color: var(--ani-ink);
+	margin: 0;
+}
+
+.ani-cap-card__bullets {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	flex: 1 1 auto;
+}
+
+.ani-cap-card__bullets li {
+	font-size: 0.9rem;
+	color: var(--ani-body);
+	line-height: 1.5;
+	padding-inline-start: 14px;
+	position: relative;
+}
+
+.ani-cap-card__bullets li::before {
+	content: "";
+	position: absolute;
+	inset-inline-start: 0;
+	inset-block-start: 8px;
+	width: 5px;
+	height: 5px;
+	border-radius: 50%;
+	background: var(--ani-blue);
+}
+
+/* "פרטים נוספים" link at card bottom */
+.ani-cap-card__link {
+	margin-block-start: auto;
+	font-size: 0.92rem;
+}
+
+
+/* =============================================================== DETAIL HERO */
+
+.ani-service-hero {
+	padding-block: 72px 56px;
+}
+
+.ani-service-hero__inner {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 48px;
+	align-items: center;
+}
+
+.ani-service-hero__copy {
+	order: 1;
+}
+
+.ani-service-hero__media {
+	order: 2;
+}
+
+.ani-service-breadcrumb {
+	color: var(--ani-blue);
+	font-weight: 600;
+	font-size: 0.85rem;
+	text-decoration: none;
+	transition: color .15s;
+}
+
+.ani-service-breadcrumb:hover {
+	color: var(--ani-blue-deep);
+}
+
+.ani-service-hero__intro {
+	font-size: 1.1rem;
+	color: var(--ani-body);
+	line-height: 1.7;
+	max-width: 56ch;
+	margin-block: 16px 28px;
+}
+
+
+/* =============================================================== WHAT WE DO */
+
+.ani-service-what {
+	padding-block: 80px;
+}
+
+.ani-service-bullets {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+	max-width: 68ch;
+}
+
+.ani-service-bullets__item {
+	display: flex;
+	align-items: flex-start;
+	gap: 14px;
+	font-size: 1.02rem;
+	color: var(--ani-body);
+	line-height: 1.6;
+}
+
+.ani-service-bullets__dot {
+	display: inline-block;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: var(--ani-blue);
+	flex-shrink: 0;
+	margin-block-start: 7px;
+}
+
+
+/* =============================================================== MATERIALS / METHODS */
+
+.ani-service-materials {
+	padding-block: 88px;
+}
+
+.ani-service-mat-grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 16px;
+}
+
+.ani-service-mat-card {
+	background: var(--ani-white);
+	border: 1px solid var(--ani-border);
+	border-radius: 10px;
+	padding: 18px 20px;
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	box-shadow: 0 1px 3px rgba(13, 20, 27, .04);
+}
+
+/* Technical term — IBM Plex Mono, LTR */
+.ani-service-mat-card__term {
+	font-family: var(--ani-mono);
+	font-size: 0.88rem;
+	font-weight: 500;
+	color: var(--ani-blue);
+	unicode-bidi: isolate;
+}
+
+.ani-service-mat-card__desc {
+	font-size: 0.9rem;
+	color: var(--ani-body);
+	line-height: 1.5;
+}
+
+
+/* =============================================================== EQUIPMENT */
+
+.ani-service-equipment {
+	padding-block: 80px;
+}
+
+.ani-service-equip-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+	border: 1px solid var(--ani-border);
+	border-radius: var(--ani-radius-card);
+	overflow: hidden;
+}
+
+.ani-service-equip-item {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	padding: 16px 22px;
+	border-block-end: 1px solid var(--ani-border);
+	background: var(--ani-white);
+	transition: background .15s ease;
+}
+
+.ani-service-equip-item:last-child {
+	border-block-end: none;
+}
+
+.ani-service-equip-item:hover {
+	background: var(--ani-surface);
+}
+
+/* Machine name — IBM Plex Mono, LTR-isolated */
+.ani-service-equip-item__name {
+	font-family: var(--ani-mono);
+	font-size: 0.9rem;
+	font-weight: 500;
+	color: var(--ani-ink);
+	unicode-bidi: isolate;
+	flex-shrink: 0;
+	min-width: 240px;
+}
+
+.ani-service-equip-item__desc {
+	font-size: 0.9rem;
+	color: var(--ani-muted);
+	line-height: 1.5;
+}
+
+
+/* =============================================================== APPLICATIONS */
+
+.ani-service-apps {
+	padding-block: 88px;
+}
+
+.ani-service-app-grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 16px;
+}
+
+.ani-service-app-card {
+	display: flex;
+	align-items: flex-start;
+	gap: 12px;
+	background: var(--ani-white);
+	border: 1px solid var(--ani-border);
+	border-radius: 10px;
+	padding: 18px 20px;
+	font-size: 0.95rem;
+	color: var(--ani-body);
+	line-height: 1.55;
+	box-shadow: 0 1px 3px rgba(13, 20, 27, .04);
+}
+
+.ani-service-app-card__dot {
+	display: inline-block;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: var(--ani-blue);
+	flex-shrink: 0;
+	margin-block-start: 6px;
+}
+
+
+/* =============================================================== RESPONSIVE */
+
+@media (max-width: 1024px) {
+	.ani-cap-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	.ani-service-hero__inner {
+		grid-template-columns: 1fr;
+		gap: 32px;
+	}
+
+	.ani-service-hero__media {
+		order: -1;
+	}
+}
+
+@media (max-width: 760px) {
+	.ani-services-hero {
+		padding-block: 56px 40px;
+	}
+
+	.ani-cap-grid {
+		grid-template-columns: 1fr;
+		max-width: 480px;
+		margin-inline: auto;
+	}
+
+	.ani-service-mat-grid,
+	.ani-service-app-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.ani-service-equip-item {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 6px;
+	}
+
+	.ani-service-equip-item__name {
+		min-width: 0;
+	}
+
+	.ani-services-hero__props {
+		flex-direction: column;
+		gap: 10px;
+	}
+}
+
+@media (max-width: 480px) {
+	.ani-cap-grid {
+		max-width: none;
+	}
+}
+
+/* ============================================================================
+   CAPABILITY DETAIL PAGE — redesign (.ani-svc-*)
+   Mobile-first. Light hero + feature cards, a DARK technical section (materials
+   + equipment) for contrast/character, applications, related-capability links.
+   ========================================================================== */
+
+.ani-service-page { background: var(--ani-white); }
+
+/* ---------- HERO ---------- */
+.ani-svc-hero {
+	position: relative;
+	background: var(--ani-blueprint);
+	overflow: hidden;
+	padding-block: clamp(40px, 6vw, 84px);
+}
+.ani-svc-hero::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background-image:
+		linear-gradient(rgba(31, 109, 255, .07) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(31, 109, 255, .07) 1px, transparent 1px);
+	background-size: 40px 40px;
+	pointer-events: none;
+}
+.ani-svc-hero__inner {
+	position: relative;
+	z-index: 1;
+	display: grid;
+	grid-template-columns: 1.05fr 1fr;
+	gap: clamp(28px, 5vw, 64px);
+	align-items: center;
+}
+.ani-svc-hero__copy { min-width: 0; }
+
+.ani-svc-breadcrumb {
+	font-family: var(--ani-mono);
+	font-size: 0.82rem;
+	color: var(--ani-muted);
+	margin-block-end: 18px;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+}
+.ani-svc-breadcrumb a { color: var(--ani-blue); text-decoration: none; font-weight: 600; }
+.ani-svc-breadcrumb a:hover { color: var(--ani-blue-deep); }
+.ani-svc-breadcrumb__sep { color: var(--ani-border); }
+.ani-svc-breadcrumb__current { color: var(--ani-body); }
+
+.ani-svc-hero__title {
+	font-size: clamp(2.1rem, 1.3rem + 3.4vw, 3.4rem);
+	font-weight: 800;
+	line-height: 1.06;
+	color: var(--ani-ink);
+	margin: 0 0 18px;
+}
+.ani-svc-hero__title::after {
+	content: "";
+	display: block;
+	inline-size: 60px;
+	block-size: 4px;
+	border-radius: 2px;
+	background: var(--ani-blue);
+	margin-block-start: 18px;
+}
+.ani-svc-hero__intro {
+	font-size: clamp(1.02rem, 0.95rem + 0.4vw, 1.2rem);
+	line-height: 1.7;
+	color: var(--ani-body);
+	max-inline-size: 46ch;
+	margin: 0 0 24px;
+}
+
+/* Spec chips (material/method terms) */
+.ani-svc-chips {
+	list-style: none;
+	margin: 0 0 28px;
+	padding: 0;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+.ani-svc-chip {
+	font-family: var(--ani-mono);
+	font-size: 0.78rem;
+	font-weight: 500;
+	color: var(--ani-body);
+	background: var(--ani-white);
+	border: 1px solid var(--ani-border);
+	border-radius: 999px;
+	padding: 7px 14px;
+}
+
+.ani-svc-hero__actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.ani-btn--ghost-svc {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	padding: 12px 22px;
+	border-radius: 8px;
+	font-weight: 700;
+	font-size: 0.95rem;
+	background: var(--ani-white);
+	color: var(--ani-ink);
+	border: 1px solid var(--ani-border);
+	text-decoration: none;
+	transition: border-color .15s ease, color .15s ease, transform .15s ease;
+}
+.ani-btn--ghost-svc:hover { border-color: #25D366; color: #128C4B; transform: translateY(-1px); }
+
+/* Hero media */
+.ani-svc-hero__media {
+	position: relative;
+	border-radius: 16px;
+	overflow: hidden;
+	box-shadow: 0 18px 50px rgba(13, 20, 27, .14);
+	aspect-ratio: 7 / 6;
+	background: #0d141b;
+}
+.ani-svc-hero__media img { inline-size: 100%; block-size: 100%; object-fit: cover; display: block; }
+.ani-svc-hero__badge {
+	position: absolute;
+	inset-block-end: 14px;
+	inset-inline-start: 14px;
+	font-family: var(--ani-mono);
+	font-size: 0.72rem;
+	font-weight: 600;
+	letter-spacing: .12em;
+	color: #fff;
+	background: rgba(31, 109, 255, .92);
+	padding: 5px 10px;
+	border-radius: 6px;
+}
+
+/* ---------- SECTION SHELL ---------- */
+.ani-svc-section { padding-block: clamp(48px, 7vw, 88px); }
+.ani-svc-section--surface { background: var(--ani-surface); }
+.ani-svc-section--dark { background: var(--ani-ink); position: relative; overflow: hidden; }
+.ani-svc-section--dark::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background-image:
+		linear-gradient(rgba(31, 109, 255, .1) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(31, 109, 255, .1) 1px, transparent 1px);
+	background-size: 44px 44px;
+	mask-image: radial-gradient(circle at 70% 30%, #000, transparent 80%);
+	-webkit-mask-image: radial-gradient(circle at 70% 30%, #000, transparent 80%);
+	pointer-events: none;
+}
+.ani-svc-section--dark .ani-container { position: relative; z-index: 1; }
+
+.ani-svc-head { margin-block-end: 32px; }
+.ani-svc-head__eyebrow {
+	display: block;
+	font-family: var(--ani-mono);
+	font-size: 0.82rem;
+	font-weight: 600;
+	color: var(--ani-blue);
+	margin-block-end: 8px;
+}
+.ani-svc-head__title {
+	font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.2rem);
+	font-weight: 800;
+	color: var(--ani-ink);
+	line-height: 1.15;
+	margin: 0;
+}
+.ani-svc-head--on-dark .ani-svc-head__title { color: var(--ani-white); }
+.ani-svc-head--on-dark .ani-svc-head__eyebrow { color: #7FB0FF; }
+
+/* ---------- WHAT WE DO ---------- */
+.ani-svc-features {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 16px;
+}
+.ani-svc-feature {
+	display: flex;
+	align-items: flex-start;
+	gap: 16px;
+	padding: 24px;
+	background: var(--ani-white);
+	border: 1px solid var(--ani-border);
+	border-radius: var(--ani-radius-card);
+	box-shadow: var(--ani-shadow-card);
+	transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+}
+.ani-svc-feature:hover { transform: translateY(-3px); border-color: color-mix(in srgb, var(--ani-blue) 40%, var(--ani-border)); box-shadow: 0 12px 30px rgba(13, 20, 27, .1); }
+.ani-svc-feature__icon {
+	flex-shrink: 0;
+	inline-size: 38px;
+	block-size: 38px;
+	border-radius: 10px;
+	background: rgba(31, 109, 255, .1);
+	color: var(--ani-blue);
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+}
+.ani-svc-feature__icon svg { inline-size: 20px; block-size: 20px; }
+.ani-svc-feature__text { margin: 0; font-size: 1.02rem; font-weight: 600; color: var(--ani-ink); line-height: 1.5; }
+
+/* ---------- TECHNICAL (materials + equipment) ---------- */
+.ani-svc-tech { display: grid; grid-template-columns: 1.3fr 1fr; gap: clamp(28px, 4vw, 56px); }
+.ani-svc-mat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.ani-svc-mat-card {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	padding: 18px;
+	background: rgba(255, 255, 255, .04);
+	border: 1px solid rgba(127, 176, 255, .18);
+	border-radius: 10px;
+	transition: border-color .15s ease, background .15s ease;
+}
+.ani-svc-mat-card:hover { border-color: rgba(127, 176, 255, .5); background: rgba(255, 255, 255, .06); }
+.ani-svc-mat-card__term { font-family: var(--ani-mono); font-weight: 600; color: #9FC1FF; font-size: 0.95rem; }
+.ani-svc-mat-card__desc { color: rgba(255, 255, 255, .74); font-size: 0.9rem; line-height: 1.5; }
+
+.ani-svc-equip { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.ani-svc-equip__item {
+	display: flex;
+	align-items: flex-start;
+	gap: 14px;
+	padding: 16px 18px;
+	background: rgba(255, 255, 255, .04);
+	border: 1px solid rgba(127, 176, 255, .18);
+	border-radius: 10px;
+}
+.ani-svc-equip__icon { flex-shrink: 0; color: #7FB0FF; }
+.ani-svc-equip__icon svg { inline-size: 22px; block-size: 22px; }
+.ani-svc-equip__body { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.ani-svc-equip__name { font-family: var(--ani-mono); font-weight: 600; color: #fff; font-size: 0.92rem; }
+.ani-svc-equip__desc { color: rgba(255, 255, 255, .68); font-size: 0.86rem; line-height: 1.45; }
+
+/* ---------- APPLICATIONS ---------- */
+.ani-svc-apps { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.ani-svc-app {
+	display: flex;
+	align-items: flex-start;
+	gap: 14px;
+	padding: 22px;
+	background: var(--ani-white);
+	border: 1px solid var(--ani-border);
+	border-radius: var(--ani-radius-card);
+	box-shadow: var(--ani-shadow-card);
+}
+.ani-svc-app__icon {
+	flex-shrink: 0;
+	inline-size: 36px;
+	block-size: 36px;
+	border-radius: 10px;
+	background: rgba(31, 109, 255, .1);
+	color: var(--ani-blue);
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+}
+.ani-svc-app__icon svg { inline-size: 19px; block-size: 19px; }
+.ani-svc-app__text { margin: 0; color: var(--ani-body); font-size: 0.98rem; line-height: 1.55; font-weight: 500; }
+
+/* ---------- RELATED CAPABILITIES ---------- */
+.ani-svc-related__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.ani-svc-related__card {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px;
+	padding: 22px 24px;
+	background: var(--ani-white);
+	border: 1px solid var(--ani-border);
+	border-radius: var(--ani-radius-card);
+	text-decoration: none;
+	transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease;
+}
+.ani-svc-related__card:hover {
+	transform: translateY(-3px);
+	border-color: var(--ani-blue);
+	box-shadow: 0 12px 30px rgba(13, 20, 27, .1);
+}
+.ani-svc-related__name { font-weight: 700; font-size: 1.05rem; color: var(--ani-ink); }
+.ani-svc-related__arrow {
+	flex-shrink: 0;
+	inline-size: 34px;
+	block-size: 34px;
+	border-radius: 50%;
+	background: rgba(31, 109, 255, .1);
+	color: var(--ani-blue);
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	transition: background .15s ease, color .15s ease;
+}
+.ani-svc-related__card:hover .ani-svc-related__arrow { background: var(--ani-blue); color: #fff; }
+.ani-svc-related__arrow svg { inline-size: 16px; block-size: 16px; }
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 900px) {
+	.ani-svc-hero__inner { grid-template-columns: 1fr; }
+	.ani-svc-hero__media { order: -1; max-block-size: 320px; }
+	.ani-svc-tech { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+	.ani-svc-features,
+	.ani-svc-apps,
+	.ani-svc-mat-grid,
+	.ani-svc-related__grid { grid-template-columns: 1fr; }
+	.ani-svc-hero__media { aspect-ratio: 16 / 10; }
+}
+
+/* =====================================================================
+   CLIENT 2026-08 REBUILD — video hero, lead, technologies, advantages,
+   process strip, proof gallery + lightbox, closing.
+   ===================================================================== */
+
+/* ---------- HERO: video + contain-fit image ---------- */
+.ani-svc-video { position: relative; inline-size: 100%; block-size: 100%; }
+.ani-svc-video__el {
+	inline-size: 100%; block-size: 100%; object-fit: cover; display: block;
+	background: var(--ani-ink);
+}
+.ani-svc-hero__media img.is-contain { object-fit: contain; background: var(--ani-ink); }
+.ani-svc-video__toggle {
+	position: absolute; inset-block-end: 12px; inset-inline-start: 12px;
+	inline-size: 40px; block-size: 40px; border: 0; border-radius: 50%;
+	background: color-mix(in srgb, var(--ani-ink) 62%, transparent);
+	color: #fff; cursor: pointer; display: inline-flex; align-items: center; justify-content: center;
+	-webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+	transition: background .15s ease, transform .15s ease;
+}
+.ani-svc-video__toggle:hover { background: var(--ani-blue); transform: scale(1.06); }
+.ani-svc-video__toggle svg { inline-size: 18px; block-size: 18px; }
+/* Show the "play" glyph only while paused. */
+.ani-svc-video__toggle::after {
+	content: ""; position: absolute; inline-size: 0; block-size: 0;
+	border-block: 8px solid transparent; border-inline-start: 12px solid #fff;
+	margin-inline-start: 3px; opacity: 0;
+}
+.ani-svc-video.is-paused .ani-svc-video__toggle svg { opacity: 0; }
+.ani-svc-video.is-paused .ani-svc-video__toggle::after { opacity: 1; }
+
+/* ---------- LEAD body + industries ---------- */
+.ani-svc-lead { padding-block: clamp(2rem, 5vw, 3.5rem); background: var(--ani-white); }
+.ani-svc-lead__text {
+	max-inline-size: 62ch; margin-inline: auto; text-align: center;
+	font-size: clamp(1.05rem, 1.6vw, 1.375rem); line-height: 1.7; color: var(--ani-body);
+}
+.ani-svc-industries {
+	list-style: none; margin: 1.5rem 0 0; padding: 0;
+	display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
+}
+.ani-svc-industry {
+	font-family: var(--ani-mono); font-size: .8rem; letter-spacing: .02em;
+	color: var(--ani-body); background: var(--ani-blueprint);
+	border: 1px solid var(--ani-border); border-radius: 999px;
+	padding-block: 6px; padding-inline: 14px;
+}
+
+/* ---------- TECHNOLOGIES (FDM / SLS / SLA) ---------- */
+.ani-svc-techs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-block-start: 2rem; }
+.ani-svc-techcard {
+	background: var(--ani-white); border: 1px solid var(--ani-border);
+	border-radius: var(--ani-radius-card); padding: 26px 24px;
+	border-block-start: 3px solid var(--ani-blue);
+	box-shadow: var(--ani-shadow-card);
+	transition: transform .2s ease, box-shadow .2s ease;
+}
+.ani-svc-techcard:hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(13, 20, 27, .12); }
+.ani-svc-techcard__term {
+	display: block; font-family: var(--ani-mono); font-weight: 600;
+	font-size: 1.6rem; color: var(--ani-ink); letter-spacing: .04em;
+}
+.ani-svc-techcard__sub { display: block; margin-block-start: 4px; font-weight: 600; color: var(--ani-blue); font-size: .95rem; }
+.ani-svc-techcard__desc { margin-block-start: 12px; color: var(--ani-body); line-height: 1.65; font-size: .95rem; }
+
+/* ---------- ADVANTAGES (on dark) ---------- */
+.ani-svc-adv {
+	list-style: none; margin: 2rem 0 0; padding: 0;
+	display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;
+}
+.ani-svc-adv__item {
+	display: flex; align-items: flex-start; gap: 14px;
+	background: color-mix(in srgb, #fff 5%, transparent);
+	border: 1px solid color-mix(in srgb, #fff 12%, transparent);
+	border-radius: var(--ani-radius-card); padding: 18px 20px;
+}
+.ani-svc-adv__num {
+	font-family: var(--ani-mono); font-size: 1.05rem; font-weight: 600;
+	color: var(--ani-blue); flex: 0 0 auto; line-height: 1.5;
+}
+.ani-svc-adv__text { color: #E7EDF5; line-height: 1.6; font-size: 1rem; }
+
+/* ---------- PROCESS strip (composites) ---------- */
+.ani-svc-process { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; margin-block-start: 2rem; }
+.ani-svc-process__step {
+	position: relative; margin: 0; border-radius: var(--ani-radius-card);
+	overflow: hidden; background: var(--ani-ink); box-shadow: var(--ani-shadow-card);
+}
+.ani-svc-process__step img { inline-size: 100%; block-size: 100%; aspect-ratio: 7 / 5; object-fit: cover; display: block; }
+.ani-svc-process__num {
+	position: absolute; inset-block-start: 12px; inset-inline-start: 12px;
+	font-family: var(--ani-mono); font-weight: 600; color: #fff;
+	background: color-mix(in srgb, var(--ani-ink) 55%, transparent);
+	border-radius: 6px; padding: 4px 9px; font-size: .85rem;
+}
+.ani-svc-process__cap {
+	position: absolute; inset-block-end: 0; inset-inline: 0; margin: 0;
+	padding: 26px 16px 12px; color: #fff; font-size: .9rem; line-height: 1.4;
+	background: linear-gradient(to top, rgba(13, 20, 27, .85), transparent);
+}
+
+/* ---------- PROOF GALLERY ---------- */
+.ani-svc-gallery {
+	display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+	gap: 14px; margin-block-start: 2rem;
+}
+.ani-svc-gallery__item {
+	position: relative; padding: 0; border: 1px solid var(--ani-border);
+	border-radius: var(--ani-radius-card); overflow: hidden; cursor: zoom-in;
+	background: var(--ani-ink); aspect-ratio: 1 / 1;
+	transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.ani-svc-gallery__item img { inline-size: 100%; block-size: 100%; object-fit: cover; display: block; transition: transform .3s ease; }
+.ani-svc-gallery__item::after {
+	content: ""; position: absolute; inset: 0;
+	background: color-mix(in srgb, var(--ani-blue) 0%, transparent);
+	transition: background .2s ease;
+}
+.ani-svc-gallery__item:hover,
+.ani-svc-gallery__item:focus-visible {
+	transform: translateY(-4px); border-color: var(--ani-blue);
+	box-shadow: 0 16px 36px rgba(13, 20, 27, .18); outline: none;
+}
+.ani-svc-gallery__item:hover img,
+.ani-svc-gallery__item:focus-visible img { transform: scale(1.05); }
+.ani-svc-gallery__item:hover::after,
+.ani-svc-gallery__item:focus-visible::after { background: color-mix(in srgb, var(--ani-blue) 12%, transparent); }
+
+/* ---------- CLOSING statement ---------- */
+.ani-svc-closing { padding-block: clamp(2.5rem, 6vw, 4.5rem); background: var(--ani-blueprint); }
+.ani-svc-closing__text {
+	max-inline-size: 60ch; margin-inline: auto; text-align: center;
+	font-size: clamp(1.15rem, 2vw, 1.6rem); line-height: 1.55; font-weight: 600;
+	color: var(--ani-ink);
+}
+
+/* ---------- LIGHTBOX ---------- */
+body.ani-lb-open { overflow: hidden; }
+.ani-lightbox {
+	position: fixed; inset: 0; z-index: 9999;
+	display: flex; align-items: center; justify-content: center;
+	padding: clamp(16px, 4vw, 48px);
+	background: color-mix(in srgb, var(--ani-ink) 92%, transparent);
+	opacity: 0; transition: opacity .22s ease;
+}
+.ani-lightbox.is-open { opacity: 1; }
+.ani-lightbox__img {
+	max-inline-size: 100%; max-block-size: 100%; object-fit: contain;
+	border-radius: var(--ani-radius-card); box-shadow: 0 30px 80px rgba(0, 0, 0, .5);
+	transform: scale(.96); transition: transform .22s ease;
+}
+.ani-lightbox.is-open .ani-lightbox__img { transform: scale(1); }
+.ani-lightbox__close {
+	position: absolute; inset-block-start: clamp(12px, 3vw, 28px); inset-inline-end: clamp(12px, 3vw, 28px);
+	inline-size: 46px; block-size: 46px; border-radius: 50%; border: 0; cursor: pointer;
+	background: color-mix(in srgb, #fff 14%, transparent); color: #fff;
+	display: inline-flex; align-items: center; justify-content: center;
+	transition: background .15s ease, transform .15s ease;
+}
+.ani-lightbox__close:hover { background: var(--ani-blue); transform: rotate(90deg); }
+.ani-lightbox__close svg { inline-size: 22px; block-size: 22px; }
+
+/* ---------- RESPONSIVE (client rebuild) ---------- */
+@media (max-width: 900px) {
+	.ani-svc-techs { grid-template-columns: 1fr; }
+	.ani-svc-adv { grid-template-columns: 1fr; }
+}
+@media (max-width: 700px) {
+	.ani-svc-process { grid-template-columns: 1fr; }
+	.ani-svc-gallery { grid-template-columns: repeat(2, 1fr); }
+}
+@media (prefers-reduced-motion: reduce) {
+	.ani-svc-techcard, .ani-svc-gallery__item, .ani-svc-gallery__item img,
+	.ani-svc-video__toggle, .ani-lightbox, .ani-lightbox__img, .ani-lightbox__close { transition: none; }
+}
+
+/* ====================================================================== *
+ *  CLIENT 2026-08 · PRECISION ELEVATION  (loads after elevate.css)
+ *  Dark blueprint hero, registration-tick motifs, technical rhythm.
+ * ====================================================================== */
+
+/* ---------- HERO → dark technical ---------- */
+.ani-svc-hero {
+  background: var(--ani-carbon);
+  color: #EAF0F8;
+  position: relative;
+  overflow: hidden;
+  border-block-end: 1px solid var(--ani-hair);
+}
+.ani-svc-hero::before {   /* blueprint grid */
+  content: ""; position: absolute; inset: -2px; z-index: 0;
+  background-image:
+    linear-gradient(rgba(47,123,255,.11) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(47,123,255,.11) 1px, transparent 1px);
+  background-size: 40px 40px;
+  -webkit-mask-image: radial-gradient(120% 90% at 70% 0%, #000 30%, transparent 78%);
+          mask-image: radial-gradient(120% 90% at 70% 0%, #000 30%, transparent 78%);
+  animation: ani-grid 26s linear infinite;
+}
+.ani-svc-hero::after {    /* corner glow */
+  content: ""; position: absolute; inset-block-start: -30%; inset-inline-end: -10%;
+  inline-size: 60%; block-size: 120%; z-index: 0; pointer-events: none;
+  background: radial-gradient(closest-side, rgba(31,109,255,.28), transparent 70%);
+}
+@keyframes ani-grid { to { background-position: 40px 40px, 40px 40px; } }
+.ani-svc-hero__inner { position: relative; z-index: 1; }
+
+.ani-svc-breadcrumb { color: #8FA1B8; font-family: var(--ani-mono); font-size: .8rem; }
+.ani-svc-breadcrumb a { color: #8FA1B8; }
+.ani-svc-breadcrumb a:hover { color: var(--ani-blue); }
+.ani-svc-breadcrumb__current { color: var(--ani-blue); }
+.ani-svc-hero__title { color: #fff; font-size: clamp(2.2rem, 5.2vw, 3.6rem); letter-spacing: -.02em; }
+.ani-svc-hero__intro { color: #B9C6D8; font-size: clamp(1.02rem, 1.5vw, 1.2rem); }
+
+.ani-svc-chip {
+  background: rgba(255,255,255,.05); border: 1px solid var(--ani-hair);
+  color: #D6E0EE; font-family: var(--ani-mono);
+}
+
+/* media as an engineering frame with registration ticks */
+.ani-svc-hero__media { position: relative; border: 1px solid var(--ani-hair); border-radius: 12px; background: var(--ani-ink-2); }
+.ani-svc-hero__media::before, .ani-svc-hero__media::after {
+  content: ""; position: absolute; inline-size: 16px; block-size: 16px; z-index: 4; pointer-events: none;
+  border: 2px solid var(--ani-tick);
+}
+.ani-svc-hero__media::before { inset-block-start: -1px; inset-inline-start: -1px; border-inline-end: 0; border-block-end: 0; }
+.ani-svc-hero__media::after  { inset-block-end: -1px; inset-inline-end: -1px; border-inline-start: 0; border-block-start: 0; }
+.ani-svc-hero__badge {
+  font-family: var(--ani-mono); background: var(--ani-blue); color: #fff;
+  letter-spacing: .12em; border-radius: 4px;
+}
+
+/* ---------- section eyebrows → tick label everywhere ---------- */
+.ani-svc-head__eyebrow { display: inline-flex; align-items: center; gap: .6em; }
+.ani-svc-head__title { letter-spacing: -.015em; }
+
+/* ---------- capabilities feature cards → registration ticks + hover ---------- */
+.ani-svc-feature {
+  position: relative; border-radius: 10px; overflow: hidden;
+  transition: transform .28s var(--e-ease,ease), box-shadow .28s ease, border-color .28s ease;
+}
+.ani-svc-feature::after {
+  content: ""; position: absolute; inset-block-start: 0; inset-inline-start: 0;
+  inline-size: 3px; block-size: 0; background: var(--ani-blue); transition: block-size .3s var(--e-ease,ease);
+}
+.ani-svc-feature:hover { transform: translateY(-4px); border-color: color-mix(in srgb, var(--ani-blue) 45%, var(--ani-border)); box-shadow: 0 16px 38px rgba(13,20,27,.12); }
+.ani-svc-feature:hover::after { block-size: 100%; }
+
+/* ---------- technology cards → mono index ---------- */
+.ani-svc-techcard { counter-increment: tech; }
+.ani-svc-techcard::before {
+  content: "0" counter(tech); position: absolute; inset-block-start: 16px; inset-inline-end: 18px;
+  font-family: var(--ani-mono); font-size: .8rem; color: var(--ani-muted);
+}
+.ani-svc-techs { counter-reset: tech; }
+.ani-svc-techcard { position: relative; }
+
+/* ---------- proof gallery → mono index overlay ---------- */
+.ani-svc-gallery { counter-reset: shot; }
+.ani-svc-gallery__item { counter-increment: shot; }
+.ani-svc-gallery__item::before {
+  content: counter(shot, decimal-leading-zero); position: absolute; z-index: 3;
+  inset-block-start: 8px; inset-inline-start: 8px; font-family: var(--ani-mono); font-size: .72rem;
+  color: #fff; background: rgba(10,14,21,.6); border-radius: 4px; padding: 2px 7px;
+  opacity: 0; transition: opacity .2s ease;
+}
+.ani-svc-gallery__item:hover::before, .ani-svc-gallery__item:focus-visible::before { opacity: 1; }
+
+/* ---------- CLOSING → dramatic dark statement ---------- */
+.ani-svc-closing {
+  background: var(--ani-carbon); color: #EAF0F8; position: relative; overflow: hidden;
+  border-block: 1px solid var(--ani-hair);
+}
+.ani-svc-closing::before {
+  content: ""; position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(47,123,255,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(47,123,255,.07) 1px, transparent 1px);
+  background-size: 44px 44px; -webkit-mask-image: radial-gradient(80% 120% at 50% 0%, #000, transparent 75%); mask-image: radial-gradient(80% 120% at 50% 0%, #000, transparent 75%);
+}
+.ani-svc-closing__text { color: #fff; position: relative; font-size: clamp(1.3rem, 2.4vw, 1.9rem); }
+.ani-svc-closing__text::before {
+  content: ""; display: block; inline-size: 40px; block-size: 3px; background: var(--ani-blue);
+  margin: 0 auto 22px; border-radius: 2px;
+}
+
+/* ---------- related cards → tick hover ---------- */
+.ani-svc-related__card { transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease; }
+.ani-svc-related__card:hover { transform: translateY(-3px); box-shadow: 0 14px 32px rgba(13,20,27,.1); }
+
+@media (prefers-reduced-motion: reduce) {
+  .ani-svc-hero::before { animation: none; }
+  .ani-svc-feature, .ani-svc-feature::after, .ani-svc-related__card { transition: none; }
+}
+
+/* ---------- FIX: Hello Elementor crimson <button> reset on gallery tiles ---------- */
+.ani-svc-gallery .ani-svc-gallery__item,
+.ani-svc-gallery .ani-svc-gallery__item:hover,
+.ani-svc-gallery .ani-svc-gallery__item:focus,
+.ani-svc-gallery .ani-svc-gallery__item:focus-visible,
+.ani-svc-gallery .ani-svc-gallery__item:active {
+	border: 1px solid var(--ani-border) !important;
+	background-color: var(--ani-ink);
+	outline: none;
+	box-shadow: none;
+}
+.ani-svc-gallery .ani-svc-gallery__item:hover,
+.ani-svc-gallery .ani-svc-gallery__item:focus-visible {
+	border-color: var(--ani-blue) !important;
+	box-shadow: 0 16px 36px rgba(13, 20, 27, .18);
+}
+.ani-svc-gallery .ani-svc-gallery__item:focus-visible { outline: 2px solid var(--ani-blue); outline-offset: 2px; }

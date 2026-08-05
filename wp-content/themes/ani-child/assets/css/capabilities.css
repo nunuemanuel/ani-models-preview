@@ -1,0 +1,231 @@
+/* =======================================================================
+   A.N.I Child Theme — Capabilities & Equipment Page
+   Scoped to .ani-capabilities-page.
+   RTL-safe: logical CSS only (margin-inline / inset-inline-* / block-*).
+   No hardcoded hex — all via tokens.css custom properties.
+   No letter-spacing on Hebrew text.
+   LTR isolation on latin / numbers / machine-names via dir="ltr" / bdi.
+   ======================================================================= */
+
+
+/* ── Page wrapper ─────────────────────────────────────────────────────── */
+
+.ani-capabilities-page {
+	overflow-x: hidden;
+}
+
+
+/* ── Hero ─────────────────────────────────────────────────────────────── */
+
+.ani-cap-hero {
+	padding-block-start: 72px;
+	padding-block-end: 56px;
+	background-color: var(--ani-surface);
+}
+
+.ani-cap-hero .section-title {
+	max-width: 28ch;
+}
+
+.ani-cap-hero__intro {
+	font-size: 1.1rem;
+	color: var(--ani-body);
+	line-height: 1.7;
+	max-width: 66ch;
+	margin-block-start: 16px;
+}
+
+
+/* ── Capability group (shared across all process sections) ──────────── */
+
+/* Header: icon + section-title side by side */
+.ani-cap-group__header {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	margin-block-end: 12px;
+}
+
+.ani-cap-group__icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 48px;
+	height: 48px;
+	border-radius: 12px;
+	background: rgba(31, 109, 255, .08);
+	color: var(--ani-blue);
+	flex-shrink: 0;
+}
+
+/* Tighten the section-title bottom padding when paired with the icon */
+.ani-cap-group__header .section-title {
+	margin-block-end: 0;
+	padding-block-end: 14px;
+}
+
+.ani-cap-group__intro {
+	font-size: 1.05rem;
+	color: var(--ani-body);
+	line-height: 1.7;
+	max-width: 64ch;
+	margin-block-end: 36px;
+}
+
+/* Section image strip — full-width, capped height, object-cover */
+.ani-cap-group__img {
+	margin-block-start: 44px;
+	border-radius: var(--ani-radius-card);
+	overflow: hidden;
+	aspect-ratio: 16 / 5;
+}
+
+.ani-cap-group__img img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+
+
+/* ── Machine spec cards grid ────────────────────────────────────────── */
+
+.ani-cap-spec-grid {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 20px;
+}
+
+.ani-cap-spec-card {
+	background: var(--ani-white);
+	border: 1px solid var(--ani-border);
+	border-radius: var(--ani-radius-card);
+	box-shadow: var(--ani-shadow-card);
+	padding: 22px 20px 24px;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	transition: box-shadow .18s ease, transform .18s ease;
+}
+
+.ani-cap-spec-card:hover {
+	box-shadow: 0 6px 24px rgba(31, 109, 255, .12);
+	transform: translateY(-2px);
+}
+
+/* Machine name — IBM Plex Mono, LTR-isolated */
+.ani-cap-spec-card__name {
+	font-family: var(--ani-mono);
+	font-size: 0.9rem;
+	font-weight: 500;
+	color: var(--ani-ink);
+	unicode-bidi: isolate;
+	display: block;
+	line-height: 1.3;
+}
+
+/* Process badge — small, blue-tinted, monospace */
+.ani-cap-spec-card__process {
+	font-family: var(--ani-mono);
+	font-size: 0.75rem;
+	font-weight: 500;
+	color: var(--ani-blue);
+	background: rgba(31, 109, 255, .07);
+	border: 1px solid rgba(31, 109, 255, .22);
+	border-radius: 6px;
+	padding: 2px 8px;
+	display: inline-block;
+	align-self: flex-start;
+	unicode-bidi: isolate;
+}
+
+/* Detail bullets */
+.ani-cap-spec-card__details {
+	list-style: none;
+	margin: 8px 0 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+	border-block-start: 1px solid var(--ani-border);
+	padding-block-start: 12px;
+}
+
+.ani-cap-spec-card__details li {
+	font-size: 0.85rem;
+	color: var(--ani-body);
+	line-height: 1.5;
+	padding-inline-start: 12px;
+	position: relative;
+}
+
+.ani-cap-spec-card__details li::before {
+	content: "";
+	position: absolute;
+	inset-inline-start: 0;
+	inset-block-start: 7px;
+	width: 4px;
+	height: 4px;
+	border-radius: 50%;
+	background: var(--ani-blue);
+	opacity: .6;
+}
+
+
+/* ── CNC two-column split ───────────────────────────────────────────── */
+
+.ani-cap-cnc-split {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 48px;
+	align-items: flex-start;
+}
+
+.ani-cap-subhead {
+	font-size: 1rem;
+	font-weight: 700;
+	color: var(--ani-ink);
+	margin: 0 0 16px;
+}
+
+
+/* ── Scanning: 2-up grid ────────────────────────────────────────────── */
+
+/* .ani-cap-spec-grid handles 4 up by default; override for 2 cards */
+.ani-cap-group--scan .ani-cap-spec-grid {
+	grid-template-columns: repeat(2, 1fr);
+}
+
+
+/* ── Responsive ─────────────────────────────────────────────────────── */
+
+@media (max-width: 1200px) {
+	.ani-cap-spec-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (max-width: 880px) {
+	.ani-cap-cnc-split {
+		grid-template-columns: 1fr;
+		gap: 36px;
+	}
+
+	.ani-cap-group__img {
+		aspect-ratio: 16 / 7;
+	}
+}
+
+@media (max-width: 600px) {
+	.ani-cap-hero {
+		padding-block: 56px 40px;
+	}
+
+	.ani-cap-spec-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.ani-cap-group__img {
+		aspect-ratio: 4 / 3;
+	}
+}
