@@ -156,7 +156,7 @@ $portfolio_items = array(
 	array(
 		'file'     => '3dprint-parts-array-grey',
 		'category' => '3d-printing',
-		'alt'      => 'מגש חלקים אפורים מודפסי SLS/MJF — מנה קטנה',
+		'alt'      => 'מגש חלקים אפורים מודפסי SLS — מנה קטנה',
 		'w'        => 800,
 		'h'        => 533,
 	),

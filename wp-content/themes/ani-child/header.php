@@ -32,7 +32,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<div class="ani-header-inner">
 
 		<!-- Brand: sphere logo + wordmark + tagline (inline-start in RTL) -->
-		<a class="ani-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" aria-label="<?php esc_attr_e( 'א.נ.י מודלים ואבי טיפוס — דף הבית', 'ani' ); ?>">
+		<a class="ani-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" aria-label="<?php esc_attr_e( 'א.נ.י מודלים ואבות טיפוס — דף הבית', 'ani' ); ?>">
 			<span class="ani-logo-mark" aria-hidden="true">
 				<img
 					src="<?php echo esc_url( get_stylesheet_directory_uri() . '/assets/logo-sphere.png' ); ?>"

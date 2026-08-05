@@ -192,3 +192,14 @@ body { color: var(--ani-body-2); }
   .hero-shot__eyebrow, .hero-shot__copy h1, .hero-shot__sub, .hero-shot__tagline, .hero-shot__actions { animation: none; }
   .cap-card, .equip-card, .ani-btn, .cert-badge { transition: none; }
 }
+
+/* --- Mobile overflow safety (RTL): keep content within the viewport so the
+   components.css overflow-x:clip never cuts the start of Hebrew lines. --- */
+@media (max-width: 760px) {
+  img, video, svg { max-inline-size: 100%; height: auto; }
+  .ani-svc-hero__media, .hero-shot__media { max-inline-size: 100%; }
+  .ani-svc-hero__inner, .hero-shot__inner, .ani-container, .container,
+  .ani-svc-features > *, .ani-svc-techs > *, .ani-svc-adv > *, .ani-svc-gallery > *,
+  .cap-card, .equip-card { min-inline-size: 0; }
+  .ani-container, .container { padding-inline: clamp(16px, 5vw, 24px); }
+}

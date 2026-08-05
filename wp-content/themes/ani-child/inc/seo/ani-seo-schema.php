@@ -26,7 +26,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function ani_company_data() {
 	return array(
-		'name_he'    => 'א.נ.י מודלים ואבי טיפוס',
+		'name_he'    => 'א.נ.י מודלים ואבות טיפוס',
 		'name_en'    => 'A.N.I — Models & Prototypes',
 		'legal'      => 'A.N.I Models & Prototypes',
 		'phone'      => '+972-54-999-2742',
@@ -45,7 +45,7 @@ function ani_company_data() {
 		'knows_about' => array(
 			'Carbon fiber composites manufacturing',
 			'CNC machining (3/4/5-axis)',
-			'Industrial 3D printing (FDM, SLS, SLA, MJF)',
+			'Industrial 3D printing (FDM, SLS, SLA)',
 			'3D scanning and reverse engineering',
 			'Mechanical and electro-mechanical integration',
 			'Rapid prototyping',

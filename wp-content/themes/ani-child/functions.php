@@ -368,13 +368,13 @@ function ani_page_meta_description() {
 		'services'           => 'כל יכולות הייצור של א.נ.י תחת קורת גג אחת — חומרים מרוכבים, עיבוד שבבי CNC, הדפסת תלת-ממד, סריקה והנדסה לאחור והרכבה ואינטגרציה. מהרעיון ועד המוצר המוגמר.',
 		'composites'         => 'ייצור חלקים קלי משקל בעלי חוזק גבוה מסיבי פחמן ופייברגלס — מתכנון התבנית ועד מוצר סופי מוגמר. לתעופה, רחפנים וביטחון.',
 		'cnc'                => 'עיבוד שבבי CNC בכרסום 3/4/5 צירים לחלקים מדויקים — מחלק בודד ועד סדרות קטנות, במגוון רחב של חומרים כולל טיטניום.',
-		'3d-printing'        => 'הדפסת תלת-ממד תעשייתית — FDM, SLA, SLS ו-MJF — לחלקים הנדסיים, אבות טיפוס פונקציונליים ומוצרים סופיים, מקובץ CAD לחלק בתוך שעות.',
+		'3d-printing'        => 'הדפסת תלת-ממד תעשייתית — FDM, SLA, SLS — לחלקים הנדסיים, אבות טיפוס פונקציונליים ומוצרים סופיים, מקובץ CAD לחלק בתוך שעות.',
 		'scanning'           => 'סריקה תלת-ממדית מדויקת, הנדסה לאחור ובקרת איכות CMM — כולל שחזור חלקים קיימים ללא שרטוט מקורי.',
 		'integration'        => 'הרכבות מכניות ואלקטרו-מכניות, שילוב רכיבים אלקטרוניים ואינטגרציה של מכלולים — עד מוצר מאומת ומוכן לשימוש.',
 		'capabilities'       => 'מפרט היכולות של א.נ.י — חומרים וטכנולוגיות לעיבוד שבבי, הדפסת תלת-ממד, חומרים מרוכבים, סריקה והרכבה.',
 		'industries-clients' => 'א.נ.י משרתת את תעשיות הביטחון, התעופה, הרחפנים, הרפואה והאלקטרוניקה — לצד יזמים וממציאים פרטיים.',
 		'projects'           => 'פרויקטים נבחרים של א.נ.י — חלקים ומכלולים מוגמרים בעיבוד שבבי, הדפסת תלת-ממד וחומרים מרוכבים.',
-		'about'              => 'א.נ.י — מודלים ואבי טיפוס: One Stop Shop לפיתוח וייצור מוצרים מתקדמים, משלב הרעיון ועד למוצר המוגמר, ברחובות.',
+		'about'              => 'א.נ.י — מודלים ואבות טיפוס: One Stop Shop לפיתוח וייצור מוצרים מתקדמים, משלב הרעיון ועד למוצר המוגמר, ברחובות.',
 		'contact'            => 'דברו עם א.נ.י — בקשת הצעת מחיר לאב טיפוס, חומרים מרוכבים, CNC, הדפסת תלת-ממד וסריקה. בוואטסאפ או בטלפון 054-999-2742, מענה תוך 24 שעות.',
 	);
 
@@ -383,7 +383,7 @@ function ani_page_meta_description() {
 	}
 
 	// Last-resort site default — never empty.
-	return 'א.נ.י — מודלים ואבי טיפוס: אב טיפוס מהיר וייצור בכמויות קטנות, חומרים מרוכבים, CNC, הדפסת תלת-ממד, סריקה והרכבה. רחובות.';
+	return 'א.נ.י — מודלים ואבות טיפוס: אב טיפוס מהיר וייצור בכמויות קטנות, חומרים מרוכבים, CNC, הדפסת תלת-ממד, סריקה והרכבה. רחובות.';
 }
 
 /**
@@ -398,7 +398,7 @@ function ani_seo_meta_tags() {
 	}
 
 	$site_name = get_bloginfo( 'name' );
-	$default_img = get_stylesheet_directory_uri() . '/assets/real/heroes/integration.webp';
+	$default_img = get_stylesheet_directory_uri() . '/assets/part-hero.png';
 
 	if ( is_singular() ) {
 		$post  = get_queried_object();
@@ -621,7 +621,7 @@ require_once get_stylesheet_directory() . '/inc/seo/ani-seo-schema.php';
  */
 function ani_front_title_parts( $parts ) {
 	if ( is_front_page() ) {
-		$parts['title']   = 'א.נ.י מודלים ואבי טיפוס';
+		$parts['title']   = 'א.נ.י מודלים ואבות טיפוס';
 		$parts['tagline'] = 'אב טיפוס · CNC · הדפסת תלת-ממד · חומרים מרוכבים · רחובות';
 	}
 	return $parts;
@@ -664,7 +664,7 @@ function ani_llms_txt_output( $wp ) {
 
 	header( 'Content-Type: text/plain; charset=utf-8' );
 	$lines   = array();
-	$lines[] = '# A.N.I — Models & Prototypes (א.נ.י מודלים ואבי טיפוס)';
+	$lines[] = '# A.N.I — Models & Prototypes (א.נ.י מודלים ואבות טיפוס)';
 	$lines[] = '';
 	$lines[] = '> B2B industrial rapid-prototyping & low-volume manufacturing bureau in Rehovot, Israel.';
 	$lines[] = '> One Stop Shop: from CAD/concept to a finished physical product under one roof.';
@@ -673,7 +673,7 @@ function ani_llms_txt_output( $wp ) {
 	$lines[] = '## Capabilities';
 	$lines[] = '- [חומרים מרוכבים / Composites](' . $home . 'composites/) — carbon fiber & fiberglass, mold design, finishing.';
 	$lines[] = '- [עיבוד שבבי CNC / CNC machining](' . $home . 'cnc/) — 3/4/5-axis milling; metals incl. titanium, polymers, composites.';
-	$lines[] = '- [הדפסת תלת-ממד / 3D printing](' . $home . '3d-printing/) — FDM, SLA, SLS, MJF.';
+	$lines[] = '- [הדפסת תלת-ממד / 3D printing](' . $home . '3d-printing/) — FDM, SLA, SLS.';
 	$lines[] = '- [סריקה והנדסה לאחור / Scanning & reverse engineering](' . $home . 'scanning/) — CMM metrology, reverse engineering, QC.';
 	$lines[] = '- [הרכבה ואינטגרציה / Integration](' . $home . 'integration/) — mechanical & electro-mechanical assembly.';
 	$lines[] = '';

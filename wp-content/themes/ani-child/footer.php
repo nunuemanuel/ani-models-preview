@@ -111,7 +111,7 @@ $whatsapp_url    = 'https://wa.me/972549992742?text=' . rawurlencode( __( 'של�
 				<?php
 				printf(
 					/* translators: 1: current year */
-					esc_html__( '© %s א.נ.י מודלים ואבי טיפוס. כל הזכויות שמורות.', 'ani' ),
+					esc_html__( '© %s א.נ.י מודלים ואבות טיפוס. כל הזכויות שמורות.', 'ani' ),
 					esc_html( gmdate( 'Y' ) )
 				);
 				?>

@@ -157,13 +157,13 @@ $capabilities = array(
 	'scanning' => array(
 		'eyebrow'    => __( 'סריקה והנדסה לאחור', 'ani' ),
 		'title'      => __( 'סריקות תלת-ממד, Reverse Engineering ובדיקות CMM', 'ani' ),
-		'lead'       => __( 'א.נ.י מודלים ואבות טיפוס מספקת שירותי סריקה תלת-ממדית מתקדמים באמצעות FreeScan Combo+, המאפשרים לכידה מדויקת של גיאומטריות מורכבות, יצירת מודלים הנדסיים וביצוע בקרת איכות ברמת דיוק גבוהה.', 'ani' ),
+		'lead'       => __( 'א.נ.י מודלים ואבות טיפוס מספקת שירותי סריקה תלת-ממדית מתקדמים המאפשרים לכידה מדויקת של גיאומטריות מורכבות, יצירת מודלים הנדסיים וביצוע בקרת איכות ברמת דיוק גבוהה.', 'ani' ),
 		'body'       => __( 'באמצעות טכנולוגיית הסריקה המתקדמת ניתן לבצע תיעוד מלא של רכיבים קיימים, השוואה למודל CAD, הפקת מודלים הנדסיים (Reverse Engineering) ובדיקות ממדיות מדויקות (CMM Inspection).', 'ani' ),
 		'hero'       => array(
 			'type' => 'image',
 			'img'  => 'real/heroes/scanning',
 		),
-		'chips'      => array( 'FreeScan Combo+', 'CMM', 'Reverse Engineering', 'CAD' ),
+		'chips'      => array( 'CMM', 'Reverse Engineering', 'CAD' ),
 		'industries' => array( __( 'ביטחון', 'ani' ), __( 'תעופה', 'ani' ), __( 'רפואה', 'ani' ), __( 'תעשייה מתקדמת', 'ani' ) ),
 		'cap_label'  => __( 'השירותים שלנו', 'ani' ),
 		'capabilities' => array(
